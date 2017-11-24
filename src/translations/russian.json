@@ -1,0 +1,68 @@
+{
+    "title": "Sphere Computers",
+    "menu": {
+        "home": "Главная",
+        "about": "О нас"
+    },
+    "categories": {
+        "menu": "меню",
+        "open": "показать",
+        "close": "скрыть"
+    },
+    "sales": {
+        "title": "Мероприятия и скидки",
+        "btnShowAll": "Показать больше",
+        "btnCollapse": "Показать меньше"
+    },
+    "topSellers": "Самые популярные",
+    "parts": {
+        "viewDetails": "Подробнее",
+        "filter": {
+            "brand": "Производитель",
+            "price": "Цена",
+            "allBrands": "Все",
+            "allPrices": "Все"
+        },
+        "nodata": "В данной категории нет товаров"
+    },
+    "part": {
+        "back": "Назад",
+        "warranty": "Гарантия: {warranty} год ::: Гарантия: {warranty} года ::: Гарантия: {warranty} лет",
+        "zoom": "Увеличить"
+    },
+    "about": {
+        "mapTitle": "Как нас найти",
+        "shopInfo": {
+            "addressTitle": "Наш адрес",
+            "address": "Холон, Соколов 85",
+            "phone": "Телефон"
+        },
+        "contactUs": {
+            "title": "Свяжитесь с нами",
+            "name": "Имя",
+            "phone": "Телефон",
+            "email": "Эл. почта",
+            "message": "Сообщение",
+            "send": "Отправить",
+            "validation": {
+                "alertTitle": "Ошибка",
+                "alertClose": "Закрыть",
+                "name_empty": "Введите имя",
+                "name_invalid": "Введенное корректное имя",
+                "email_empty": "Введите адрес эл. почты",
+                "email_invalid": "Введите корректный адрес эл. почты",
+                "phone_empty": "Введите номер телефона",
+                "phone_invalid": "Введите корректный номер телефона",
+                "message_empty": "Введите сообщение",
+                "message_invalid": "Введите корректное сообщение"
+            }
+        }
+    },
+    "search": {
+        "title": "Результаты поиска",
+        "placeholder": "Поиск",
+        "notfound": "По запросу '{query}' результатов не найдено.",
+        "results": "Нашелся {count} результат по запросу '{query}' ::: Нашлись {count} результата по запросу '{query}' ::: Нашлось {count} результатов по запросу '{query}'",
+        "category": "{category}: {count} результат ::: {category}: {count} результата ::: {category}: {count} результатов"
+    }
+}

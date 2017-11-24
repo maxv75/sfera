@@ -1,0 +1,68 @@
+{
+    "title": "Sphere Computers",
+    "menu": {
+        "home": "Home",
+        "about": "About"
+    },
+    "categories": {
+        "menu": "menu",
+        "open": "open",
+        "close": "close"
+    },
+    "sales": {
+        "title": "Hot Deals & Sales",
+        "btnShowAll": "Show more deals",
+        "btnCollapse": "Show less deals"
+    },
+    "topSellers": "Top Sellers",
+    "parts": {
+        "viewDetails": "View details",
+        "filter": {
+            "brand": "Brand",
+            "price": "Price",
+            "allBrands": "All",
+            "allPrices": "All"
+        },
+        "nodata": "There is no items in selected category"
+    },
+    "part": {
+        "back": "Back",
+        "warranty": "Warranty: {warranty} year ::: Warranty: {warranty} years",
+        "zoom": "Full size"
+    },
+    "about": {
+        "mapTitle": "Store location",
+        "shopInfo": {
+            "addressTitle": "Our address",
+            "address": "Holon, St. Sokolov 85",
+            "phone": "Call Us"
+        },
+        "contactUs": {
+            "title": "Contact us",
+            "name": "Name",
+            "phone": "Telephone",
+            "email": "Email",
+            "message": "Message",
+            "send": "Send",
+            "validation": {
+                "alertTitle": "Error",
+                "alertClose": "Close",
+                "name_empty": "Please enter your name",
+                "name_invalid": "Please enter a valid name",
+                "email_empty": "Please enter your email address",
+                "email_invalid": "Please enter a valid email address",
+                "phone_empty": "Please enter your phone number",
+                "phone_invalid": "Please enter a valid phone number",
+                "message_empty": "Please enter message",
+                "message_invalid": "Please enter a valid message"
+            }
+        }
+    },
+    "search": {
+        "title": "Search results",
+        "placeholder": "Search",
+        "notfound": "No results found for '{query}'.",
+        "results": "Found {count} result for '{query}' ::: Found {count} results for '{query}'",
+        "category": "{category}: {count} result ::: {category}: {count} results"
+    }
+}

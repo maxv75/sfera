@@ -1,0 +1,68 @@
+{
+    "title": "ספרה מחשבים",
+    "menu": {
+        "home": "בית",
+        "about": "צור קשר"
+    },
+    "categories": {
+        "menu": "תפריט",
+        "open": "פתח",
+        "close": "סגור"
+    },
+    "sales": {
+        "title": "מבצעים והנחות",
+        "btnShowAll": "הצג יותר מבצעים",
+        "btnCollapse": "הצג פחות מבצעים"
+    },
+    "topSellers": "הנמכרים ביותר",
+    "parts": {
+        "viewDetails": "פרטים נוספים",
+        "filter": {
+            "brand": "יצרן",
+            "price": "מחיר",
+            "allBrands": "הכל",
+            "allPrices": "הכל"
+        },
+        "nodata": "אין מוצרים בקטגוריה"
+    },
+    "part": {
+        "back": "חזור",
+        "warranty": "אחריות: שנה אחת ::: אחריות: שנתיים ::: אחריות: {warranty} שנים",
+        "zoom": "הגדל תמונה"
+    },
+    "about": {
+        "mapTitle": "מיקום החנות",
+        "shopInfo": {
+            "addressTitle": "כתובתנו",
+            "address": "סוקולוב 85, חולון",
+            "phone": "טלפון"
+        },
+        "contactUs": {
+            "title": "צור קשר",
+            "name": "שם",
+            "phone": "טלפון",
+            "email": "דואר אלקטרוני",
+            "message": "הודעה",
+            "send": "שלח",
+            "validation": {
+                "alertTitle": "שגיאה",
+                "alertClose": "סגור",
+                "name_empty": "יש להזין שם",
+                "name_invalid": "שם אינו חוקי",
+                "email_empty": "יש להזין כתובת דואר האלקטרוני שלך",
+                "email_invalid": "כתובת דואר האלקטרוני אינה חוקית",
+                "phone_empty": "יש להזין מספר טלפון",
+                "phone_invalid": "מספר הטלפון אינו חוקי",
+                "message_empty": "יש להזין תוכן ההודעה",
+                "message_invalid": "תוכן ההודעה אינו חוקי"
+            }
+        }
+    },
+    "search": {
+        "title": "תוצאות חיפוש",
+        "placeholder": "חיפוש",
+        "notfound": "לא נמצאו תוצאות עבור '{query}'.",
+        "results": "נמצאה תוצאה אחת עבור '{query}' ::: נמצאו {count} תוצאות עבור '{query}' ::: נמצאו {count} תוצאות עבור '{query}'",
+        "category": "{category}: תוצאה אחת ::: {category}: {count} תוצאות ::: {category}: {count} תוצאות"
+    }
+}
