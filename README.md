@@ -1,6 +1,6 @@
-# sfera
+# Sphere Computers
 
-> A Vue.js project
+> A Sphere Computers Web Application project
 
 ## Build Setup
 
