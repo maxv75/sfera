@@ -5,7 +5,7 @@
             <div class="row viewpart-container">
                 <div class="col-md-4 viewpart-image">
                     <img id="partImage" v-if="info.image" v-bind:src="PicturesFolder + info.image">
-                    <img v-if="!info.img_tmb_medium" src="https://www.sfera.co.il/images/noPicture.gif">
+                    <img v-if="!info.img_tmb_medium" src="/static/images/noimage.png">
                     <div v-if="info.image"><a id="btnZoom" @click.prevent="zoomImage" v-bind:href="PicturesFolder + info.image" class="btn"><i class="glyphicon glyphicon-zoom-in"></i> <span>{{$t('part.zoom')}}</span></a></div>
                 </div>
                 <div class="col-md-8">
