@@ -8,12 +8,29 @@
              <div class="container">
                  <div class="col-md-8 promo-categories">
                      <div class="top-promo">
-                         <img src="/static/images/banner_01.jpg" width="100%" />
+                         <router-link :to="{ name: 'Parts', params: { id: promotions.top.category }}">
+                            <img :src="promotions.top.image" width="100%" />
+                            <span>{{promotions.top["name_" + lang]}}</span>
+                         </router-link>
                      </div>
                      <div class="bottom-promo">
-                         <div><img src="/static/images/banner_02.jpg" width="100%" /></div>
-                         <div><img src="/static/images/banner_03.jpg" width="100%" /></div>
-                         <div><img src="/static/images/banner_04.jpg" width="100%" /></div>
+                        <div class="b-promo-1">
+                            <router-link :to="{ name: 'Parts', params: { id: promotions.bottom.left.category }}">
+                                <img :src="promotions.bottom.left.image" width="100%" />
+                                <span>{{promotions.bottom.left["name_" + lang]}}</span>
+                            </router-link>
+                        </div>
+                         <div class="b-promo-2">
+                            <router-link :to="{ name: 'Parts', params: { id: promotions.bottom.center.category }}">
+                                <img :src="promotions.bottom.center.image" width="100%" />
+                                <span>{{promotions.bottom.center["name_" + lang]}}</span>
+                            </router-link></div>
+                         <div class="b-promo-3">
+                             <router-link :to="{ name: 'Parts', params: { id: promotions.bottom.right.category }}">
+                                <img :src="promotions.bottom.right.image" width="100%" />
+                                <span>{{promotions.bottom.right["name_" + lang]}}</span>
+                            </router-link>
+                         </div>
                      </div>
                  </div>
                  <div class="col-md-4 top-sellers">
@@ -41,10 +58,12 @@ export default {
             loading: false,
             topSellersIndex: 0,
             topsellers: [],
-            currentTopSeller: null
+            currentTopSeller: null,
+            promotions: null
         }
     },
     created () {
+        this.promotions = this.$config.promotions;
         this.getTopSellers();
     },
     methods: {
@@ -101,14 +120,84 @@ export default {
         padding-left: 15px;
         padding-right: 0;
     }
+    #site-wrapper.heb .home-page .promotions .promo-categories img {
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: "FlipH";
+    }
+
+.home-page .promotions .promo-categories .top-promo {
+    position: relative;
+}
+.home-page .promotions .promo-categories .top-promo span {
+    position: absolute;
+    left: 8%;
+    top: 20%;
+    font-size: 2.5em;
+    text-transform: uppercase;
+    color: #fff;
+}
+    #site-wrapper.heb .home-page .promotions .promo-categories .top-promo span {
+        left: auto;
+        right: 8%;
+    }
+
 .home-page .promotions .promo-categories .bottom-promo {
     display: flex;
     margin: 12px -6px 0;
 }
 
+
 .home-page .promotions .promo-categories .bottom-promo > div {
     flex: 1 1 auto;
     padding: 0 6px;
+    position: relative;
+}
+
+.home-page .promotions .promo-categories .bottom-promo > div.b-promo-1 span {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    margin-top: -1.2em;
+    text-align: center;
+    display: block;
+    font-size: 2.4em;
+    line-height: 2.4em;
+    text-transform: uppercase;
+    color: #000;
+}
+
+.home-page .promotions .promo-categories .bottom-promo > div.b-promo-2 span {
+    position: absolute;
+    left: 0;
+    top: 10%;
+    width: 100%;
+    text-align: center;
+    display: block;
+    font-size: 1.6em;
+    line-height: 1.6em;
+    text-transform: uppercase;
+    color: #000;
+}
+
+.home-page .promotions .promo-categories .bottom-promo > div.b-promo-3 span {
+    position: absolute;
+    left: 0;
+    top: 10%;
+    width: calc(100% - 12px);
+    text-align: center;
+    display: block;
+    font-size: 1.6em;
+    line-height: 1.6em;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: rgba(0,0,0, 0.5);
+    margin: 0 6px;
+    padding: 5px 10px;
 }
 
 .home-page .promotions .top-sellers {
@@ -225,14 +314,65 @@ export default {
 }
 
 @media (max-width: 992px) {
+    .home-page .promotions .promo-categories .top-promo span {
+        left: 6%;
+        top: 15%;
+        font-size: 1.5em;
+    }
+        #site-wrapper.heb .home-page .promotions .promo-categories .top-promo span {
+            left: auto;
+            right: 6%;
+        }
     .home-page .promotions .promo-categories {
         padding-left: 0;
         padding-right: 0;
         margin-bottom: 15px;
     }
+
+    .home-page .promotions .promo-categories .bottom-promo > div.b-promo-1 span {
+        margin-top: -1.1em;
+        font-size: 2.2em;
+        line-height: 2.2em;
+    }
+
+    .home-page .promotions .promo-categories .bottom-promo > div.b-promo-2 span {
+        font-size: 1.4em;
+        line-height: 1.4em;
+    }
+
+    .home-page .promotions .promo-categories .bottom-promo > div.b-promo-3 span {
+        font-size: 1.4em;
+        line-height: 1.4em;
+    }
 }
 
 @media (max-width: 1200px) {
+    .home-page .promotions .promo-categories .top-promo span {
+        left: 7%;
+        top: 18%;
+        font-size: 2em;
+    }
+        #site-wrapper.heb .home-page .promotions .promo-categories .top-promo span {
+            left: auto;
+            right: 7%;
+        }
+
+    .home-page .promotions .promo-categories .bottom-promo > div.b-promo-1 span {
+        margin-top: -1.1em;
+        font-size: 2.2em;
+        line-height: 2.2em;
+    }
+
+    .home-page .promotions .promo-categories .bottom-promo > div.b-promo-2 span {
+        font-size: 1.4em;
+        line-height: 1.4em;
+    }
+
+    .home-page .promotions .promo-categories .bottom-promo > div.b-promo-3 span {
+        font-size: 1.4em;
+        line-height: 1.4em;
+    }
+
     .home-page .promotions .top-sellers .topsellers-carousel .part-wrapper {
         height: 300px;
         padding: 10px 30px 20px;

@@ -7,14 +7,14 @@
                 <label>{{ $t('parts.filter.brand') }}</label>
                 <select v-model="brandFilter">
                     <option value="">{{ $t('parts.filter.allBrands') }}</option>
-                    <option v-for="option in parts.manufacturers"  :value="option">
+                    <option v-for="option in parts.manufacturers"  :value="option" :key="option">
                         {{ option }}
                     </option>
                 </select>
                 <label>{{ $t('parts.filter.price') }}</label> 
                 <select v-model="priceFilter">
                     <option value="">{{ $t('parts.filter.allPrices') }}</option>
-                    <option v-for="option in parts.prices"  :value="option">
+                    <option v-for="option in parts.prices"  :value="option" :key="option">
                         {{ option }}
                     </option>
                 </select>
@@ -83,32 +83,7 @@ export default {
             }, response => {
                 this.$router.replace('/404');
             });
-        },
-        // pricesFilter: function (parts) {
-        //     let filter = this.priceFilter;
-        //     return parts.filter(function (part) {
-        //         return filter == '' || part.price <= filter;
-        //     })
-        // },
-        // getAnswer: _.debounce(
-        //     function () {
-        //         if (this.question.indexOf('?') === -1) {
-        //             this.answer = 'Questions usually contain a question mark. ;-)'
-        //             return
-        //         }
-        //         this.answer = 'Thinking...';
-        //         var vm = this;
-        //         axios.get('https://yesno.wtf/api').then(function (response) {
-        //             vm.answer = _.capitalize(response.data.answer)
-        //         })
-        //         .catch(function (error) {
-        //             vm.answer = 'Error! Could not reach the API. ' + error
-        //         });
-        //     },
-        //     // This is the number of milliseconds we wait for the
-        //     // user to stop typing.
-        //     500
-        // )
+        }
     },
     computed: {
         partsFilter: function() {
@@ -125,25 +100,6 @@ export default {
         PicturesFolder: function() {
             return this.$config.PicturesUrl;
         }
-        // firmsFilter: function() {
-        //     let filter = this.firmFilter.toUpperCase();
-        //     let pricefilter = this.priceFilter;
-        //     let vm = this;
-        //     return this.parts.parts.filter(function (entry) {
-        //         return ((filter == '' || entry.firm === filter) && (pricefilter == '' || vm.pricesFilter(entry.parts).length > 0));
-        //     });
-            
-        //     // const firmFilter = entry => (this.firmFilter == '') || (entry.firm === this.firmFilter.toUpperCase());
-
-        //     // const reducer = (accumulator, entry) => {
-        //     //     //if (albumFilter(entry) && yearFilter(entry))
-        //     //     if (firmFilter(entry))
-        //     //         accumulator.push(entry);
-        //     //     return accumulator;
-        //     // }
-
-        //     // return this.parts.parts.reduce(reducer, []);
-        // }
     }
 }
 </script>

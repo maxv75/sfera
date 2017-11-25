@@ -1,5 +1,37 @@
 {
     "PicturesUrl": "https://www.sfera.co.il/pictures/",
     "BaseAPIUrl": "https://new.sfera.co.il/",
-    "StoreMapUrl": "https://www.google.com/maps/embed/v1/place?key=AIzaSyD0aV-RzfYDV0CvT0CqoAWtjnqKZmwRCI0&q=Sokolov+St+85,+Holon&language="
+    "StoreMapUrl": "https://www.google.com/maps/embed/v1/place?key=AIzaSyD0aV-RzfYDV0CvT0CqoAWtjnqKZmwRCI0&q=Sokolov+St+85,+Holon&language=",
+    "promotions": {
+        "top": {
+            "image": "/static/images/banner_01.jpg",
+            "name_en": "Laptops",
+            "name_ru": "Ноутбуки",
+            "name_he": "מחשבים ניידים",
+            "category": 42
+        },
+        "bottom": {
+            "left": {
+                "image": "/static/images/banner_02.jpg",
+                "name_en": "Speakers",
+                "name_ru": "Динамики",
+                "name_he": "רמקולים",
+                "category": 62
+            },
+            "center": {
+                "image": "/static/images/banner_03.jpg",
+                "name_en": "Monitors",
+                "name_ru": "Мониторы",
+                "name_he": "מסכים",
+                "category": 26
+            },
+            "right": {
+                "image": "/static/images/banner_04.jpg",
+                "name_en": "Hard Drives",
+                "name_ru": "Жесткие диски",
+                "name_he": "כוננים קשיחים",
+                "category": 11
+            }
+        }
+    }
 }
