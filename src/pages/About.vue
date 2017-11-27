@@ -20,6 +20,7 @@
                         <div class="form-group message">
                             <textarea class="form-control" rows="3" id="txtMessage" v-model.trim="form.message" v-bind:placeholder="$t('about.contactUs.message')"></textarea>
                         </div>
+                        <span class="mandatory">{{ $t('about.contactUs.mandatory') }}</span>
                         <button type="button" class="btn btn-primary" v-bind:class="{ 'pull-right': lang != 'he', 'pull-left': lang == 'he' }" @click="send">{{$t('about.contactUs.send')}}</button>
                     </form>
                 </div>
@@ -290,5 +291,19 @@
     margin: 10px 0 40px;
     color: #fff;
     position: relative;
+}
+
+.about-page .contact-us-wrapper .mandatory {
+    margin-top: 5px;
+    margin-left: 5px;
+    display: inline-block;
+    color: #fff;
+    font-weight: 300;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75);
+}
+#site-wrapper.heb .about-page .contact-us-wrapper .mandatory {
+    margin-left: 0;
+    margin-right: 5px;
+    text-shadow: -1px 1px 1px rgba(0, 0, 0, 0.75);
 }
 </style>

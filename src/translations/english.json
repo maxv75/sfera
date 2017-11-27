@@ -47,6 +47,7 @@
             "generalError": "Server error. Please try again later.",
             "successTitle": "Message",
             "successMessage": "The message was successfully sent.",
+            "mandatory": "* All fields are mandatory",
             "validation": {
                 "header": "There are an errors sending contact us form",
                 "footer": "Please fix these errors and try again",

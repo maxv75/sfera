@@ -6,7 +6,7 @@
                 <div class="col-md-4 viewpart-image">
                     <img id="partImage" v-if="info.image" v-bind:src="PicturesFolder + info.image">
                     <img v-if="!info.img_tmb_medium" src="/static/images/noimage.png">
-                    <div v-if="info.image"><a id="btnZoom" @click.prevent="zoomImage" v-bind:href="PicturesFolder + info.image" class="btn"><i class="glyphicon glyphicon-zoom-in"></i> <span>{{$t('part.zoom')}}</span></a></div>
+                    <div v-if="info.image"><a id="btnZoom" @click.prevent="zoomImage" v-bind:href="PicturesFolder + info.image" class="btn"><span>{{$t('part.zoom')}}</span></a></div>
                 </div>
                 <div class="col-md-8">
                     <div class="clearfix"><button type="button" @click="goBack" class="btn btn-primary" v-bind:class="{ 'pull-right': lang != 'he', 'pull-left': lang == 'he' }">{{$t('part.back')}}</button></div>
@@ -145,7 +145,22 @@
     color: #0096DB;
     border: 1px solid #0096DB;
     border-radius: 0;
+    padding-left: 6px;
 }
+    #site-wrapper.heb .viewpart-container .viewpart-image div a {
+        padding-left: 12px;
+        padding-right: 6px;
+    }
+.viewpart-container .viewpart-image div a span {
+    display: block;
+    background: url('/static/images/zoom.png') 0 50% no-repeat;
+    padding-left: 30px;
+}
+    #site-wrapper.heb .viewpart-container .viewpart-image div a span {
+        background-position: 100% 50%;
+        padding-left: 0;
+        padding-right: 30px;
+    }
 .viewpart-container .viewpart-image div a i {
     vertical-align: middle;
     font-size: 1.5em;
