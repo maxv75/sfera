@@ -44,16 +44,21 @@
             "email": "דואר אלקטרוני",
             "message": "הודעה",
             "send": "שלח",
+            "generalError": "שגיאת שרת. אנא נסו שוב מאוחר יותר.",
+            "successTitle": "הודעה",
+            "successMessage": "ההודעה נשלחה בהצלחה.",
             "validation": {
+                "header": "נמצאו שגיאות במילואי הטופס",
+                "footer": "אנא תקן את השגיאות ונסה שוב",
                 "alertTitle": "שגיאה",
                 "alertClose": "סגור",
-                "name_empty": "יש להזין שם",
+                "name_empty": "חובה להזין שם",
                 "name_invalid": "שם אינו חוקי",
-                "email_empty": "יש להזין כתובת דואר האלקטרוני שלך",
+                "email_empty": "חובה להזין כתובת דואר האלקטרוני",
                 "email_invalid": "כתובת דואר האלקטרוני אינה חוקית",
-                "phone_empty": "יש להזין מספר טלפון",
+                "phone_empty": "חובה להזין מספר טלפון",
                 "phone_invalid": "מספר הטלפון אינו חוקי",
-                "message_empty": "יש להזין תוכן ההודעה",
+                "message_empty": "חובה להזין תוכן ההודעה",
                 "message_invalid": "תוכן ההודעה אינו חוקי"
             }
         }

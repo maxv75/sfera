@@ -9,16 +9,16 @@
                             <input type="text" class="form-control" id="txtSubject" v-model="form.subject">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="txtName" v-model="form.name" v-bind:placeholder="$t('about.contactUs.name')">
+                            <input type="text" class="form-control" id="txtName" v-model.trim="form.name" v-bind:placeholder="$t('about.contactUs.name')">
                         </div>
                         <div class="form-group phone">
-                            <input type="tel" class="form-control" id="txtPhone" v-model="form.phone" v-bind:placeholder="$t('about.contactUs.phone')">
+                            <input type="tel" class="form-control" id="txtPhone" v-model.trim="form.phone" v-bind:placeholder="$t('about.contactUs.phone')">
                         </div>
                         <div class="form-group email">
-                            <input type="email" class="form-control" id="txtEmail" v-model="form.email" v-bind:placeholder="$t('about.contactUs.email')">
+                            <input type="email" class="form-control" id="txtEmail" v-model.trim="form.email" v-bind:placeholder="$t('about.contactUs.email')">
                         </div>
                         <div class="form-group message">
-                            <textarea class="form-control" rows="3" id="txtMessage" v-model="form.message" v-bind:placeholder="$t('about.contactUs.message')"></textarea>
+                            <textarea class="form-control" rows="3" id="txtMessage" v-model.trim="form.message" v-bind:placeholder="$t('about.contactUs.message')"></textarea>
                         </div>
                         <button type="button" class="btn btn-primary" v-bind:class="{ 'pull-right': lang != 'he', 'pull-left': lang == 'he' }" @click="send">{{$t('about.contactUs.send')}}</button>
                     </form>
@@ -48,7 +48,7 @@
             <iframe v-bind:src="mapUrl" width="100%" frameborder="0" style="border:0"></iframe>
         </div>
 
-        <modal ref="msgError" :message="$t('about.contactUs.validation.alertClose')" :is-footer="true"></modal>
+        <modal ref="msgBox" :type="msgBox.type" :title="msgBox.title" :show-as-list="msgBox.showAsList" :header="msgBox.header" :footer="msgBox.footer" :messages="msgBox.messages" :is-header-close="false" :is-footer="true"></modal>
     </div>
 </template>
 
@@ -66,7 +66,16 @@
                     email: '',
                     message: '',
                     subject: ''
-                }
+                },
+                msgBox: {
+                    type: "error",
+                    messages: [],
+                    title: "",
+                    header: "",
+                    footer: "",
+                    showAsList: false
+                },
+                isSending: false
             }
         },
         mounted () {
@@ -74,6 +83,17 @@
         },
         methods: {
             send () {
+                if(this.isSending) {
+                    return;
+                }
+
+                this.isSending = true;
+
+                if(!this.validateForm()) {
+                    this.isSending = false;
+                    return;
+                }
+
                 let vm = this;
                 this.$http.post('api/sendmail', this.form).then(response => {
                     let data = response.data;
@@ -82,38 +102,61 @@
                         for (var field in this.form) {
                             this.form[field] = '';
                         }
+
+                        this.showSuccess();
                     } else if(data.errors.length > 0) {
-                        this.$refs.msgError.open();
-                        //this.showErrors(data.errors);
-                        /*
-                        let $_ul = $('#msgBox .modal-body ul');
-                        $_ul.empty();
-                        let messages = [];
+                        let errors = [];
                         data.errors.forEach(function(error) {
-                            $_ul.append('<li>' + vm.$t('about.contactUs.validation.' + error) + '</li>');
-                            messages.push(vm.$t('about.contactUs.validation.' + error));
+                            errors.push(vm.$t('about.contactUs.validation.' + error));
                         });
-                        $('#msgBox').modal('show');
-                        //alert(messages.join('\n'));
-                        */
+
+                        vm.showErrors(vm.$t('about.contactUs.validation.header'), vm.$t('about.contactUs.validation.footer'), errors, true);
                     } else {
                         // General send mail error
-                        this.showErrors(['There was an error. Please try again later']);
+                        this.showErrors('', '', [vm.$t('about.contactUs.generalError')], false);
                     }
+
+                    this.isSending = false;
                 }, response => {
-                    this.showErrors(['There was an error. Please try again later']);
+                    this.showErrors('','', [vm.$t('about.contactUs.generalError')], false);
+                    this.isSending = false;
                 });
             },
-            showErrors (message, errors) {
-                let vm = this;
-                let $_ul = $('#msgBox .modal-body ul');
-                $_ul.empty();
+            showErrors (header, footer, errors, showAsList) {
+                this.msgBox.type = 'error';
+                this.msgBox.title = this.$t('about.contactUs.validation.alertTitle');
+                this.msgBox.header = header;
+                this.msgBox.footer = footer;
+                this.msgBox.messages = errors;
+                this.msgBox.showAsList = showAsList;
+                this.$refs.msgBox.open();
+            },
+            showSuccess () {
+                this.msgBox.type = 'success';
+                this.msgBox.title = this.$t('about.contactUs.successTitle');
+                this.msgBox.header = '';
+                this.msgBox.footer = '';
+                this.msgBox.messages = [this.$t('about.contactUs.successMessage')];
+                this.msgBox.showAsList = false;
+                this.$refs.msgBox.open();
+            },
+            validateForm () {
+                let errors = [];
+                if(this.form.name == '')
+                    errors.push(this.$t('about.contactUs.validation.name_empty'));
+                if(this.form.phone == '')
+                    errors.push(this.$t('about.contactUs.validation.phone_empty'));
+                if(this.form.email == '')
+                    errors.push(this.$t('about.contactUs.validation.email_empty'));
+                if(this.form.message == '')
+                    errors.push(this.$t('about.contactUs.validation.message_empty'));
 
-                errors.forEach(function(error) {
-                    $_ul.append('<li>' + vm.$t('about.contactUs.validation.' + error) + '</li>');
-                });
+                if(errors.length > 0) {
+                    this.showErrors(this.$t('about.contactUs.validation.header'), this.$t('about.contactUs.validation.footer'), errors, true);
+                    return false;
+                }
 
-                $('#msgBox').modal('show');
+                return true;
             }
         },
         computed: {
@@ -240,7 +283,7 @@
     font-weight: 400;
 }
 
-.about-page h4 { 
+.about-page .contact-us-wrapper h4 { 
     font-size: 1.75em;
     font-weight: 400;
     text-align: center; 

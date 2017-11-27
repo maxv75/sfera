@@ -44,17 +44,22 @@
             "email": "Email",
             "message": "Message",
             "send": "Send",
+            "generalError": "Server error. Please try again later.",
+            "successTitle": "Message",
+            "successMessage": "The message was successfully sent.",
             "validation": {
+                "header": "There are an errors sending contact us form",
+                "footer": "Please fix these errors and try again",
                 "alertTitle": "Error",
                 "alertClose": "Close",
-                "name_empty": "Please enter your name",
-                "name_invalid": "Please enter a valid name",
-                "email_empty": "Please enter your email address",
-                "email_invalid": "Please enter a valid email address",
-                "phone_empty": "Please enter your phone number",
-                "phone_invalid": "Please enter a valid phone number",
-                "message_empty": "Please enter message",
-                "message_invalid": "Please enter a valid message"
+                "name_empty": "The name field is mandatory",
+                "name_invalid": "The name field is not valid",
+                "email_empty": "The email address is mandatory",
+                "email_invalid": "The email address is not valid",
+                "phone_empty": "The phone number is mandatory",
+                "phone_invalid": "The phone number is not valid",
+                "message_empty": "The message field is mandatory",
+                "message_invalid": "The message field is not valid"
             }
         }
     },
