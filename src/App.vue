@@ -4,19 +4,29 @@
             <nav class="navbar navbar-default container">
                 <div class="nav-container">
                     <ul class="nav navbar-nav">
-                        <li><router-link to="/">{{$t('menu.home')}}</router-link></li>
-                        <li><router-link to="/about">{{$t('menu.about')}}</router-link></li>
+                        <li class="navbar-main">
+                            <ol class="breadcrumb">
+                                <li><router-link to="/">{{$t('menu.home')}}</router-link></li>
+                                <li><router-link to="/about">{{$t('menu.about')}}</router-link></li>
+                            </ol>
+                        </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="search">
                             <search v-bind:query="searchValue" v-on:search="search"></search>
                         </li>
                         <li class="language-select">
-                            <ol class="breadcrumb">
+                            <ol>
+                                <li><i class="glyphicon glyphicon-chevron-down"></i>{{lang.toUpperCase()}}</li>
+                                <li v-for="ln in languages" :key="ln">
+                                    <a href="#" v-on:click.stop.prevent="changeLanguage(ln)">{{ln.toUpperCase()}}</a>
+                                </li>
+                            </ol>
+                            <!-- <ol class="breadcrumb">
                                 <li><a href="#" v-bind:class="{ 'lang-active': lang == 'en' }" v-on:click.stop.prevent="changeLanguage('en')">EN</a></li>
                                 <li><a href="#" v-bind:class="{ 'lang-active': lang == 'ru' }" v-on:click.stop.prevent="changeLanguage('ru')">РУ</a></li>
                                 <li><a href="#" class="he" v-bind:class="{ 'lang-active': lang == 'he' }" v-on:click.stop.prevent="changeLanguage('he')">ע</a></li>
-                            </ol>
+                            </ol> -->
                         </li>
                     </ul>
                 </div>
@@ -63,6 +73,12 @@
         computed: {
             lang: function () {
                 return this.$i18n.locale();
+            },
+            languages: function() {
+                let lang = this.$i18n.locale();
+                return ['en', 'ru', 'he'].filter(function (ln) {
+                    return ln != lang;
+                });
             },
             ...mapGetters({
                 loading: 'getLoader'
@@ -118,12 +134,38 @@ header {
     background-color: #f3f3f3;
     margin-bottom: 0;
 }
-.navbar-default .navbar-nav {
 
+.navbar-default .navbar-nav li.navbar-main {
+    padding: 20px 0;
 }
-    .navbar-default .navbar-nav a.router-link-exact-active,
-    .navbar-default .navbar-nav a.router-link-exact-active:active,
-    .navbar-default .navbar-nav a.router-link-exact-active:visited {
+    .navbar-default .navbar-nav li.navbar-main .breadcrumb {
+        margin: 0;
+        padding: 0;
+    }
+        .navbar-default .navbar-nav li.navbar-main .breadcrumb > li {
+            padding-left: 3px;
+        }
+            .navbar-default .navbar-nav li.navbar-main .breadcrumb>li+li:before {
+                color: #777;
+            }
+            #site-wrapper.heb .navbar-default .navbar-nav li.navbar-main .breadcrumb > li {
+                padding-left: 0;
+                padding-right: 0;
+            }
+            .navbar-default .navbar-nav li.navbar-main .breadcrumb > li:first-child {
+                padding-left: 0;
+            }
+                #site-wrapper.heb .navbar-default .navbar-nav li.navbar-main .breadcrumb > li:first-child {
+                    padding-left: 0;
+                    padding-right: 0;
+                }
+            .navbar-default .navbar-nav li.navbar-main .breadcrumb > li a {
+                color: #777;
+                text-decoration: none;
+            }
+    .navbar-default .navbar-nav li.navbar-main .breadcrumb > li a.router-link-exact-active,
+    .navbar-default .navbar-nav li.navbar-main .breadcrumb > li a.router-link-exact-active:active,
+    .navbar-default .navbar-nav li.navbar-main .breadcrumb > li a.router-link-exact-active:visited {
         color: #0096DB;
     }
     #site-wrapper.heb .navbar-nav {
@@ -140,37 +182,81 @@ header {
 
 .navbar-default .navbar-right .search {
     padding-top: 15px;
-    margin-right: 10px;
+    margin-right: 15px;
 }
     #site-wrapper.heb .navbar-default .navbar-right .search {
         margin-right: 0;
-        margin-left: 10px;
+        margin-left: 15px;
     }
 
 .navbar-default .navbar-nav > li > a {
     padding-top: 20px;
     padding-bottom: 20px;
 }
-.navbar-default .navbar-nav > li.language-select .breadcrumb {
-    margin: 11px 0 0;
-    background-color: #f3f3f3;
-}
 
-.navbar-default .navbar-nav > li.language-select .breadcrumb>li+li:before {
-    padding: 0 2px;
+.navbar-default .navbar-nav > li.language-select {
+    margin-top: 15px;
+    width: 60px;
+    height: 30px;
+    position: relative;
 }
-
-.navbar-default .navbar-nav > li.language-select .breadcrumb a {
-    color: #777;
-    text-decoration: none;
-    font-size: 1em;
-    line-height: 1.1em;
+.navbar-default .navbar-nav > li.language-select ol {
+    list-style: none;
+    overflow: hidden;
+    background-color: #fff;
+    border: 1px solid #0096DB;
+    margin: 0;
+    padding: 0;
+    width: 60px;
+    max-height: 30px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 99;
+    -webkit-transition: max-height 0.2s ease-in-out; 
+    -moz-transition: max-height 0.2s ease-in-out; 
+    -ms-transition: max-height 0.2s ease-in-out; 
+    -o-transition: max-height 0.2s ease-in-out; 
+    transition: max-height 0.2s ease-in-out;  
+    cursor: pointer;
 }
-.navbar-default .navbar-nav > li.language-select .breadcrumb a.he {
+.navbar-default .navbar-nav > li.language-select ol:hover {
+    max-height: 90px;
+}
+.navbar-default .navbar-nav > li.language-select ol li {
+    height: 30px;
     font-size: 1.2em;
+    line-height: 28px;
+    text-align: right;
+    padding-left: 8px;
+    padding-right: 10px;
+    color: #333;
 }
-.navbar-default .navbar-nav > li.language-select .breadcrumb a.lang-active {
+    #site-wrapper.heb .navbar-default .navbar-nav > li.language-select ol li {
+        text-align: left;
+        padding-left: 10px;
+        padding-right: 8px;
+    }
+.navbar-default .navbar-nav > li.language-select ol li:first-child {
     color: #0096DB;
+}
+.navbar-default .navbar-nav > li.language-select ol li .glyphicon {
+    font-size: 12px;
+    margin-right: 5px;
+}
+    #site-wrapper.heb .navbar-default .navbar-nav > li.language-select ol li .glyphicon {
+        margin-right:0;
+        margin-left: 5px;
+    }
+.navbar-default .navbar-nav > li.language-select ol li a {
+    text-decoration: none;
+    color: #777;
+    display: block;
+}
+.navbar-default .navbar-nav > li.language-select ol li a:hover {
+    text-decoration: none;
+    color: #333;
 }
 
 #categoriesMenu {
