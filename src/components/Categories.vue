@@ -93,16 +93,18 @@ ul.level1 {
     list-style: none;
     color: #fff;
     padding: 30px 0 0;
+    text-align: center;
 }
 ul.level1 > li {
-    float: left;
     padding: 5px 10px;
     position: relative;
     margin-bottom: 5px;
+    display: inline-block;
+    text-align: left;
 }
 
     #site-wrapper.heb ul.level1 > li {
-        float: right;
+        text-align: right;
     }
 
 ul.level1 > li.expandable {

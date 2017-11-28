@@ -108,29 +108,29 @@
     color: #0096DB;
     border: 1px solid #0096DB;
     border-radius: 0;
-    padding-left: 9px;
+    padding-left: 10px;
     font-size: 1.2em;
     font-weight: 400;
 }
     #site-wrapper.heb .sales .sales-open button {
         padding-left: 12px;
-        padding-right: 9px;
+        padding-right: 10px;
     }
 
     .sales .sales-open button i {
         background: url('/static/images/arr-down.jpg') 0 0 no-repeat;
-        width: 20px;
-        height: 15px;
+        width: 16px;
+        height: 12px;
         display: inline-block;
         vertical-align: middle;
-        margin-right: 7px;
+        margin-right: 8px;
     }
     .sales .sales-open button span {
         vertical-align: middle;
     }
     #site-wrapper.heb .sales .sales-open button i {
         margin-right: 0;
-        margin-left: 7px;
+        margin-left: 8px;
     }
     .sales .sales-open button.opened i {
         background-image: url('/static/images/arr-up.jpg');

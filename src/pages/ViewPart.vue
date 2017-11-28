@@ -145,11 +145,11 @@
     color: #0096DB;
     border: 1px solid #0096DB;
     border-radius: 0;
-    padding-left: 6px;
+    padding-left: 8px;
 }
     #site-wrapper.heb .viewpart-container .viewpart-image div a {
         padding-left: 12px;
-        padding-right: 6px;
+        padding-right: 8px;
     }
 .viewpart-container .viewpart-image div a span {
     display: block;
@@ -159,7 +159,7 @@
     #site-wrapper.heb .viewpart-container .viewpart-image div a span {
         background-position: 100% 50%;
         padding-left: 0;
-        padding-right: 30px;
+        padding-right: 32px;
     }
 .viewpart-container .viewpart-image div a i {
     vertical-align: middle;
@@ -168,7 +168,7 @@
 .viewpart-container .viewpart-image div a span {
     vertical-align: middle;
     font-size: 1em;
-    line-height: 1.5em;
+    line-height: 1.7em;
 }
 .viewpart-container p {
     margin: 0;
