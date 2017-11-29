@@ -37,8 +37,8 @@
                     <h3 class="topsellers-title"><span>{{$t('topSellers')}}</span></h3>
                     <div class="topsellers-carousel">
                         <part v-if="topsellers.length > 0" v-bind:data="currentTopSeller" :topseller="true"></part>
-                        <div class="topsellers-carousel-nav">
-                            <button class="carousel-bw" @click="getNextTopSeller(-1)"></button><button class="carousel-fw" @click="getNextTopSeller(1)"></button>
+                        <div v-if="topsellers.length > 1" class="topsellers-carousel-nav">
+                            <button class="carousel-bw" :class="{ 'disabled': isFirstTopSeller }" @click="getNextTopSeller(-1)"></button><button class="carousel-fw" :class="{ 'disabled': isLastTopSeller }" @click="getNextTopSeller(1)"></button>
                         </div>
                     </div>
                  </div>
@@ -82,15 +82,14 @@ export default {
         },
         getNextTopSeller (direction) {
             if(this.topsellers.length == 0)
-                return null;
+                return;
 
+            if(direction == 1 && this.topSellersIndex == this.topsellers.length - 1)
+                return;
+            else if(direction == -1 && this.topSellersIndex == 0)
+                return;
+            
             this.topSellersIndex += direction;
-
-            if(direction == 1 && this.topSellersIndex == this.topsellers.length) {
-                this.topSellersIndex = 0;
-            } else if(direction == -1 && this.topSellersIndex < 0) {
-                this.topSellersIndex = this.topsellers.length - 1;
-            }
 
             this.currentTopSeller = this.topsellers[this.topSellersIndex];
         }
@@ -98,6 +97,12 @@ export default {
     computed: {
         lang: function () {
             return this.$i18n.locale();
+        },
+        isFirstTopSeller: function () {
+            return this.topsellers.length == 1 || this.topSellersIndex == 0;
+        },
+        isLastTopSeller: function () {
+            return this.topsellers.length == 1 || this.topSellersIndex == this.topsellers.length - 1;
         }
     },
     watch: {
@@ -235,15 +240,28 @@ export default {
     background-position: 0 0;
     padding: 0;
 }
+    .home-page .promotions .top-sellers .topsellers-carousel .topsellers-carousel-nav button:focus {
+        outline: none;
+    }
 .home-page .promotions .top-sellers .topsellers-carousel .topsellers-carousel-nav button.carousel-fw {
     background-image: url('/static/images/arr_right.png');
 }
+    .home-page .promotions .top-sellers .topsellers-carousel .topsellers-carousel-nav button.carousel-fw.disabled,
+    .home-page .promotions .top-sellers .topsellers-carousel .topsellers-carousel-nav button.carousel-fw.disabled:hover {
+        background-image: url('/static/images/arr_right_noactive.png');
+        cursor: default;
+    }
 .home-page .promotions .top-sellers .topsellers-carousel .topsellers-carousel-nav button.carousel-fw:hover {
     background-image: url('/static/images/arr_right_active.png');
 }
 .home-page .promotions .top-sellers .topsellers-carousel .topsellers-carousel-nav button.carousel-bw {
     background-image: url('/static/images/arr_left.png');
 }
+    .home-page .promotions .top-sellers .topsellers-carousel .topsellers-carousel-nav button.carousel-bw.disabled,
+    .home-page .promotions .top-sellers .topsellers-carousel .topsellers-carousel-nav button.carousel-bw.disabled:hover {
+        background-image: url('/static/images/arr_left_noactive.png');
+        cursor: default;
+    }
 .home-page .promotions .top-sellers .topsellers-carousel .topsellers-carousel-nav button.carousel-bw:hover {
     background-image: url('/static/images/arr_left_active.png');
 }
@@ -251,12 +269,20 @@ export default {
     #site-wrapper.heb .home-page .promotions .top-sellers .topsellers-carousel .topsellers-carousel-nav button.carousel-fw {
         background-image: url('/static/images/arr_left.png');
     }
+        #site-wrapper.heb .home-page .promotions .top-sellers .topsellers-carousel .topsellers-carousel-nav button.carousel-fw.disabled,
+        #site-wrapper.heb .home-page .promotions .top-sellers .topsellers-carousel .topsellers-carousel-nav button.carousel-fw.disabled:hover {
+            background-image: url('/static/images/arr_left_noactive.png');
+        }
     #site-wrapper.heb .home-page .promotions .top-sellers .topsellers-carousel .topsellers-carousel-nav button.carousel-fw:hover {
         background-image: url('/static/images/arr_left_active.png');
     }
     #site-wrapper.heb .home-page .promotions .top-sellers .topsellers-carousel .topsellers-carousel-nav button.carousel-bw {
         background-image: url('/static/images/arr_right.png');
     }
+        #site-wrapper.heb .home-page .promotions .top-sellers .topsellers-carousel .topsellers-carousel-nav button.carousel-bw.disabled,
+        #site-wrapper.heb .home-page .promotions .top-sellers .topsellers-carousel .topsellers-carousel-nav button.carousel-bw.disabled:hover {
+            background-image: url('/static/images/arr_right_noactive.png');
+        }
     #site-wrapper.heb .home-page .promotions .top-sellers .topsellers-carousel .topsellers-carousel-nav button.carousel-bw:hover {
         background-image: url('/static/images/arr_right_active.png');
     }
