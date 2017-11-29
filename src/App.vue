@@ -65,40 +65,47 @@
                 searchValue: this.$route.query.q,
                 isMenuFixed: false,
                 menuTop: 0,
-                menuHeight: 0
+                menuHeight: 0,
+                menuFullHeight: 0
             }
         },
         mounted () {
             let vm = this;
             let $_catMenu = $('#categoriesMenu');
             this.menuTop = $_catMenu.offset().top;
-            this.menuHeight = $('#categoriesMenu').outerHeight(true);
+            this.menuHeight = $_catMenu.outerHeight(true);
+            this.menuFullHeight = $_catMenu.outerHeight(true);
             $(window).on('scroll', () => {
                 let scrollTop = $(window).scrollTop();
                 if(vm.isMenuFixed === false && scrollTop > vm.menuTop) {
+                    // Fix menu
                     vm.isMenuFixed = true;
+                    // Add menu placeholder to avoid overall page height shrinking
                     $('<div>')
                         .attr('id', 'catMenuPlaceholder')
                         .height(this.menuHeight)
                         .insertBefore($_catMenu);
-                        
+
                     $_catMenu.addClass('fixed');
                     if(!vm.$refs.catMenu.closed) {
+                        // Collapse menu on scroll
                         vm.$refs.catMenu.toggleMenu();
                     }
                 } else if(vm.isMenuFixed === true && scrollTop <= vm.menuTop) {
+                    // Restore menu to its initial position (non fixed)
                     vm.isMenuFixed = false;
                     $_catMenu.removeClass('fixed');
                     $('#catMenuPlaceholder').remove();
 
                     if(vm.$refs.catMenu.closed && !vm.$refs.catMenu.isClosedByUser) {
+                        // Open menu on scroll to top only if its not be collapsed by user
                         vm.$refs.catMenu.toggleMenu();
                     }
                 }
             });
             $(window).on('resize', () => {
-                this.menuHeight = $('#categoriesMenu').outerHeight(true);
-                console.log(this.menuHeight);
+                this.menuHeight = $_catMenu.outerHeight(true);
+                this.menuFullHeight = $_catMenu.outerHeight(true);
                 if(vm.isMenuFixed) {
                     $('#catMenuPlaceholder').height(this.menuHeight);
                 }

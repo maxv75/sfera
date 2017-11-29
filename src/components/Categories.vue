@@ -28,14 +28,13 @@
             }
         },
         created () {
-            // fetch the data when the view is created and the data is
-            // already being observed
             this.fetchData();
         },
         updated () {
             if(!this.isInitialized) {
                 // Save categories menu height on component data loaded
                 this.$parent.menuHeight = $('#categoriesMenu').outerHeight(true);
+                this.$parent.menuFullHeight = $('#categoriesMenu').outerHeight(true);
                 this.isInitialized = true;
             }
         },
@@ -51,12 +50,14 @@
                 this.isClosedByUser = isUserAction && isUserAction === true;
 
                 if(this.$parent.isMenuFixed) {
-                    let targetHeight = vm.closed ? this.$parent.menuHeight : $('#closeMenu').outerHeight(true);
+                    // Change height of menu placeholder 
+                    let targetHeight = vm.closed ? this.$parent.menuFullHeight : $('#closeMenu').outerHeight(true);
                     $('#catMenuPlaceholder').animate({'height': targetHeight }, 250);
                 }
 
                 $('.level1').slideToggle(250, function() {
                     vm.closed = !vm.closed;
+                    // Set menu height variable according to real menu height (collapsed or not)
                     vm.$parent.menuHeight = $('#categoriesMenu').outerHeight(true);
                 });
                 
