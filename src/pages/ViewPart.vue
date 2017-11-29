@@ -4,9 +4,9 @@
             <h3 class="page-title"><span><template v-if="info.top_cat_id">{{ info.top_cat_name }} - </template>{{ info.cat_name }}</span></h3>
             <div class="row viewpart-container">
                 <div class="col-md-4 viewpart-image">
-                    <img id="partImage" v-if="info.image" v-bind:src="PicturesFolder + info.image">
+                    <img id="partImage" v-if="info.image" @click="zoomImage" v-bind:src="PicturesFolder + info.image">
                     <img v-if="!info.img_tmb_medium" src="/static/images/noimage.png">
-                    <div v-if="info.image"><a id="btnZoom" @click.prevent="zoomImage" v-bind:href="PicturesFolder + info.image" class="btn"><span>{{$t('part.zoom')}}</span></a></div>
+                    <div v-if="info.image"><a id="btnZoom" @click.prevent="zoomImage" v-bind:href="PicturesFolder + info.image">{{$t('part.zoom')}}</a></div>
                 </div>
                 <div class="col-md-8">
                     <div class="clearfix"><button type="button" @click="goBack" class="btn btn-primary" v-bind:class="{ 'pull-right': lang != 'he', 'pull-left': lang == 'he' }">{{$t('part.back')}}</button></div>
@@ -16,7 +16,10 @@
                     </div>
                     <p v-if="info.short_descr" v-html="info.short_descr"></p>
                     <p v-if="info.descr" v-html="info.descr"></p>
-                    <div v-if="info.warranty" class="viewpart-warranty">{{ $t('part.warranty', { 'warranty': info.warranty }, parseInt(info.warranty)) }}</div>
+                    <div class="viewpart-warranty-wrapper">
+                        <div v-if="info.warranty" class="viewpart-warranty" :class="{ 'separator': info.link }">{{ $t('part.warranty', { 'warranty': info.warranty }, parseInt(info.warranty)) }}</div>
+                        <div v-if="info.link" class="viewpart-link"><a :href="info.link" target="_blank">{{$t('part.link')}}</a></div>
+                    </div>
                 </div>
             </div>
             
@@ -136,31 +139,27 @@
 .viewpart-container .viewpart-image img {
     max-width: 220px;
     max-height: 220px;
+    cursor: pointer;
 }
 .viewpart-container .viewpart-image div {
     margin-top: 40px;
 }
 .viewpart-container .viewpart-image div a {
-    background-color: #fff;
-    color: #0096DB;
-    border: 1px solid #0096DB;
-    border-radius: 0;
-    padding-left: 8px;
+    color: #777;
+    background: #fff url('/static/images/zoom.png') 0 50% no-repeat;
+    padding-left: 32px;
+    text-decoration: underline;
+    height: 25px;
+    display: inline-block;
+    font-size: 1.2em;
+    line-height: 1.5;
 }
     #site-wrapper.heb .viewpart-container .viewpart-image div a {
-        padding-left: 12px;
-        padding-right: 8px;
-    }
-.viewpart-container .viewpart-image div a span {
-    display: block;
-    background: url('/static/images/zoom.png') 0 50% no-repeat;
-    padding-left: 30px;
-}
-    #site-wrapper.heb .viewpart-container .viewpart-image div a span {
         background-position: 100% 50%;
         padding-left: 0;
-        padding-right: 32px;
+        padding-right: 34px;
     }
+
 .viewpart-container .viewpart-image div a i {
     vertical-align: middle;
     font-size: 1.5em;
@@ -173,10 +172,61 @@
 .viewpart-container p {
     margin: 0;
     padding: 20px 0;
-    border-top: 1px solid #e4e4e4;
+    border-top: 1px solid #dcdcdc;
+    color: #555;
+}
+.viewpart-container .viewpart-warranty-wrapper {
+    padding: 15px 0 20px;
+    border-top: 1px solid #dcdcdc;
+    color: #555;
 }
 .viewpart-container .viewpart-warranty {
-    padding: 20px 0;
-    border-top: 1px solid #e4e4e4;
+    padding: 5px 30px 5px 0;
+    display: inline-block;
 }
+    .viewpart-container .viewpart-warranty.separator {
+        border-right: 1px solid #dcdcdc;
+    }
+    #site-wrapper.heb .viewpart-container .viewpart-warranty {
+        padding: 5px 0 5px 30px;
+        display: inline-block;
+    }
+        #site-wrapper.heb .viewpart-container .viewpart-warranty.separator {
+            border-right: none;
+            border-left: 1px solid #dcdcdc;
+        } 
+.viewpart-container .viewpart-link {
+    padding-left: 30px;
+    display: inline-block;
+}
+    #site-wrapper.heb .viewpart-container .viewpart-link {
+        padding-left: 0;
+        padding-right: 30px;
+    }
+.viewpart-container .viewpart-link a {
+    color: #555;
+    text-decoration: underline;
+    padding-left: 35px;
+    display: inline-block;
+    position: relative;
+}
+    #site-wrapper.heb .viewpart-container .viewpart-link a {
+        padding-left: 0;
+        padding-right: 35px;
+    }
+    .viewpart-container .viewpart-link a:before
+    {
+        content: '';
+        width: 29px;
+        height: 29px;
+        top: -7px;
+        left: 0;
+        position: absolute;
+        background: url('/static/images/site-link.png') 0 0 no-repeat;
+    }
+        #site-wrapper.heb .viewpart-container .viewpart-link a:before
+        {
+            left: auto;
+            right: 0;
+        }
 </style>

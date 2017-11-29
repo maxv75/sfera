@@ -261,19 +261,18 @@
     background-color: #0096DB;
     background-position: 50% 50%;
     background-repeat: no-repeat;
-    background-size: 40%;
     width: 90px;
     height: 90px;
     text-align: center;
 }
     .about-page .address-wrapper .info-item .info-item-icon.map {
-        background-image: url('/static/images/address_ico.png');
+        background-image: url('/static/images/about-address.png');
     }
     .about-page .address-wrapper .info-item .info-item-icon.phone {
-        background-image: url('/static/images/callUs_ico.png');
+        background-image: url('/static/images/about-phone.png');
     }
     .about-page .address-wrapper .info-item .info-item-icon.hours {
-        background-image: url('/static/images/callUs_ico.png');
+        background-image: url('/static/images/about-hours.png');
     }
 
 .about-page .address-wrapper .info-item .info-item-data {

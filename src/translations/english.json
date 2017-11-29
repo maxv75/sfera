@@ -28,7 +28,8 @@
     "part": {
         "back": "Back",
         "warranty": "Warranty: {warranty} year ::: Warranty: {warranty} years",
-        "zoom": "Full size"
+        "zoom": "Full size",
+        "link": "See the manufacturer's website"
     },
     "about": {
         "mapTitle": "Store location",
