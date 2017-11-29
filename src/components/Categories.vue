@@ -12,7 +12,7 @@
                 </template>
             </li>
         </ul>
-        <div id="closeMenu" @click="toggleMenu"><span>{{closeMenuText}}</span><span v-bind:class="{ 'glyphicon-chevron-down': closed, 'glyphicon-chevron-up': !closed }" class="glyphicon"></span>{{$t('categories.menu')}}</div>
+        <div id="closeMenu" @click="toggleMenu(true)"><span>{{closeMenuText}}</span><span v-bind:class="{ 'glyphicon-chevron-down': closed, 'glyphicon-chevron-up': !closed }" class="glyphicon"></span>{{$t('categories.menu')}}</div>
     </div>
 </template>
 
@@ -22,7 +22,9 @@
         data () {
             return {
                 categories: [],
-                closed: false
+                closed: false,
+                isInitialized: false,
+                isClosedByUser: false
             }
         },
         created () {
@@ -30,18 +32,34 @@
             // already being observed
             this.fetchData();
         },
-
+        updated () {
+            if(!this.isInitialized) {
+                // Save categories menu height on component data loaded
+                this.$parent.menuHeight = $('#categoriesMenu').outerHeight(true);
+                this.isInitialized = true;
+            }
+        },
         methods: {
             fetchData () {
                 this.$http.get('api/categories').then(response => {
                     this.categories = response.data;
                 });
             },
-            toggleMenu () {
+            toggleMenu (isUserAction) {
                 let vm = this;
-                $('.level1').slideToggle(400, function() {
+
+                this.isClosedByUser = isUserAction && isUserAction === true;
+
+                if(this.$parent.isMenuFixed) {
+                    let targetHeight = vm.closed ? this.$parent.menuHeight : $('#closeMenu').outerHeight(true);
+                    $('#catMenuPlaceholder').animate({'height': targetHeight }, 250);
+                }
+
+                $('.level1').slideToggle(250, function() {
                     vm.closed = !vm.closed;
+                    vm.$parent.menuHeight = $('#categoriesMenu').outerHeight(true);
                 });
+                
             },
             isLinkActive (id, subcats) {
                 if (id == this.$route.params.id) {

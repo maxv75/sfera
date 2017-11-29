@@ -22,11 +22,6 @@
                                     <a href="#" v-on:click.stop.prevent="changeLanguage(ln)">{{ln.toUpperCase()}}</a>
                                 </li>
                             </ol>
-                            <!-- <ol class="breadcrumb">
-                                <li><a href="#" v-bind:class="{ 'lang-active': lang == 'en' }" v-on:click.stop.prevent="changeLanguage('en')">EN</a></li>
-                                <li><a href="#" v-bind:class="{ 'lang-active': lang == 'ru' }" v-on:click.stop.prevent="changeLanguage('ru')">РУ</a></li>
-                                <li><a href="#" class="he" v-bind:class="{ 'lang-active': lang == 'he' }" v-on:click.stop.prevent="changeLanguage('he')">ע</a></li>
-                            </ol> -->
                         </li>
                     </ul>
                 </div>
@@ -34,7 +29,7 @@
         </header>
         <div class="logo"></div>
         <div id="categoriesMenu">
-            <categories></categories>
+            <categories ref="catMenu"></categories>
         </div>
         <div class="site-pages">
             <transition name="fade" mode="out-in">
@@ -67,8 +62,47 @@
         name: 'app',
         data () {
             return {
-                searchValue: this.$route.query.q
+                searchValue: this.$route.query.q,
+                isMenuFixed: false,
+                menuTop: 0,
+                menuHeight: 0
             }
+        },
+        mounted () {
+            let vm = this;
+            let $_catMenu = $('#categoriesMenu');
+            this.menuTop = $_catMenu.offset().top;
+            this.menuHeight = $('#categoriesMenu').outerHeight(true);
+            $(window).on('scroll', () => {
+                let scrollTop = $(window).scrollTop();
+                if(vm.isMenuFixed === false && scrollTop > vm.menuTop) {
+                    vm.isMenuFixed = true;
+                    $('<div>')
+                        .attr('id', 'catMenuPlaceholder')
+                        .height(this.menuHeight)
+                        .insertBefore($_catMenu);
+                        
+                    $_catMenu.addClass('fixed');
+                    if(!vm.$refs.catMenu.closed) {
+                        vm.$refs.catMenu.toggleMenu();
+                    }
+                } else if(vm.isMenuFixed === true && scrollTop <= vm.menuTop) {
+                    vm.isMenuFixed = false;
+                    $_catMenu.removeClass('fixed');
+                    $('#catMenuPlaceholder').remove();
+
+                    if(vm.$refs.catMenu.closed && !vm.$refs.catMenu.isClosedByUser) {
+                        vm.$refs.catMenu.toggleMenu();
+                    }
+                }
+            });
+            $(window).on('resize', () => {
+                this.menuHeight = $('#categoriesMenu').outerHeight(true);
+                console.log(this.menuHeight);
+                if(vm.isMenuFixed) {
+                    $('#catMenuPlaceholder').height(this.menuHeight);
+                }
+            });
         },
         computed: {
             lang: function () {
@@ -196,7 +230,7 @@ header {
 
 .navbar-default .navbar-nav > li.language-select {
     margin-top: 15px;
-    width: 60px;
+    width: 56px;
     height: 30px;
     position: relative;
 }
@@ -207,7 +241,7 @@ header {
     border: 1px solid #0096DB;
     margin: 0;
     padding: 0;
-    width: 60px;
+    width: 56px;
     max-height: 30px;
     position: absolute;
     left: 0;
@@ -226,16 +260,16 @@ header {
 }
 .navbar-default .navbar-nav > li.language-select ol li {
     height: 30px;
-    font-size: 1.2em;
-    line-height: 28px;
+    font-size: 1em;
+    line-height: 29px;
     text-align: right;
     padding-left: 8px;
-    padding-right: 10px;
+    padding-right: 9px;
     color: #333;
 }
     #site-wrapper.heb .navbar-default .navbar-nav > li.language-select ol li {
         text-align: left;
-        padding-left: 10px;
+        padding-left: 9px;
         padding-right: 8px;
     }
 .navbar-default .navbar-nav > li.language-select ol li:first-child {
@@ -263,5 +297,12 @@ header {
     background-image: url('/static/images/menu_bg.jpg');
     background-position: 50% 0;
     background-repeat: no-repeat;
+}
+#categoriesMenu.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 5;
 }
 </style>
