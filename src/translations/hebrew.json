@@ -35,7 +35,9 @@
         "shopInfo": {
             "addressTitle": "כתובתנו",
             "address": "סוקולוב 85, חולון",
-            "phone": "טלפון"
+            "phone": "טלפון",
+            "hoursTitle": "שעות פעילות",
+            "hours": "א-ה: <span dir='ltr'>10:00&mdash;20:00</span><br />ימי שישי וערבי חג: <span dir='ltr'>10:00&mdash;14:00</span>"
         },
         "contactUs": {
             "title": "צור קשר",

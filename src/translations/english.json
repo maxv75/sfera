@@ -35,7 +35,9 @@
         "shopInfo": {
             "addressTitle": "Our address",
             "address": "Holon, St. Sokolov 85",
-            "phone": "Call Us"
+            "phone": "Call Us",
+            "hoursTitle": "Opening hours",
+            "hours": "Sun-Thu: 10:00&mdash;20:00<br />Fri. & Holiday evening: 10:00&mdash;14:00"
         },
         "contactUs": {
             "title": "Contact us",

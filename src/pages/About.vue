@@ -3,7 +3,11 @@
         <div class="contact-us-container">
             <div class="container">
                 <div class="col-md-6 contact-us-wrapper">
-                    <h4><span>{{$t('about.contactUs.title')}}</span></h4>
+                    <h4>
+                        <i></i>
+                        <span>{{$t('about.contactUs.title')}}</span>
+                        <i></i>
+                    </h4>
                     <form>
                         <div class="form-group subject">
                             <input type="text" class="form-control" id="txtSubject" v-model="form.subject">
@@ -37,6 +41,13 @@
                         <div class="info-item-data">
                             <h5>{{ $t('about.shopInfo.phone') }}</h5>
                             <p>03-5042253</p>
+                        </div>
+                    </div>
+                     <div class="info-item center-block clearfix">
+                        <div class="info-item-icon hours"></div>
+                        <div class="info-item-data hours">
+                            <h5>{{ $t('about.shopInfo.hoursTitle') }}</h5>
+                            <p v-html="$t('about.shopInfo.hours')"></p>
                         </div>
                     </div>
                 </div>
@@ -233,16 +244,17 @@
     }
 .about-page .address-wrapper {
     /* background-color: rgba(0, 0, 0, 0.4); */
-    padding-top: 100px;
+    padding-top: 50px;
     height: 420px;
 }
 
 .about-page .address-wrapper .info-item {
     margin: 0 15%;
     display: flex;
+    margin-top: 20px;
 }
 .about-page .address-wrapper .info-item:first-child {
-    margin-bottom: 20px;
+    margin-top: 0;
 }
 
 .about-page .address-wrapper .info-item .info-item-icon {
@@ -250,8 +262,8 @@
     background-position: 50% 50%;
     background-repeat: no-repeat;
     background-size: 40%;
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
     text-align: center;
 }
     .about-page .address-wrapper .info-item .info-item-icon.map {
@@ -260,14 +272,20 @@
     .about-page .address-wrapper .info-item .info-item-icon.phone {
         background-image: url('/static/images/callUs_ico.png');
     }
+    .about-page .address-wrapper .info-item .info-item-icon.hours {
+        background-image: url('/static/images/callUs_ico.png');
+    }
 
 .about-page .address-wrapper .info-item .info-item-data {
     background-color: #fff;
-    height: 100px;
+    height: 90px;
     text-align: center;
-    padding-top: 26px;
+    padding-top: 22px;
     flex-grow: 1;
 }
+    .about-page .address-wrapper .info-item .info-item-data.hours {
+        padding-top: 12px;
+    }
 
 .about-page .address-wrapper .info-item .info-item-data h5 {
     margin: 0 0 5px;
@@ -290,8 +308,20 @@
     text-align: center; 
     margin: 10px 0 40px;
     color: #fff;
-    position: relative;
+    display: flex;
+    align-items: center;
 }
+    .about-page .contact-us-wrapper h4 i {
+        display: block;
+        flex: 1 1 auto;
+        height: 1px;
+        background-color: #a9a9a9;
+    }
+    .about-page .contact-us-wrapper h4 span {
+        display: block;
+        flex: 0 0 auto;
+        margin: 0 40px;
+    }
 
 .about-page .contact-us-wrapper .mandatory {
     margin-top: 5px;
