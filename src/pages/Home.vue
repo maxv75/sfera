@@ -15,20 +15,20 @@
                      </div>
                      <div class="bottom-promo">
                         <div class="b-promo-1">
-                            <router-link :to="{ name: 'Parts', params: { id: promotions.bottom.left.category }}">
-                                <img :src="promotions.bottom.left.image" width="100%" />
-                                <span>{{promotions.bottom.left["name_" + lang]}}</span>
+                            <router-link :to="{ name: 'Parts', params: { id: bottomLeftPromotion.category }}">
+                                <img :src="bottomLeftPromotion.image" width="100%" />
+                                <span>{{bottomLeftPromotion["name_" + lang]}}</span>
                             </router-link>
                         </div>
                          <div class="b-promo-2">
-                            <router-link :to="{ name: 'Parts', params: { id: promotions.bottom.center.category }}">
-                                <img :src="promotions.bottom.center.image" width="100%" />
-                                <span>{{promotions.bottom.center["name_" + lang]}}</span>
+                            <router-link :to="{ name: 'Parts', params: { id: bottomCenterPromotion.category }}">
+                                <img :src="bottomCenterPromotion.image" width="100%" />
+                                <span>{{bottomCenterPromotion["name_" + lang]}}</span>
                             </router-link></div>
                          <div class="b-promo-3">
-                             <router-link :to="{ name: 'Parts', params: { id: promotions.bottom.right.category }}">
-                                <img :src="promotions.bottom.right.image" width="100%" />
-                                <span>{{promotions.bottom.right["name_" + lang]}}</span>
+                             <router-link :to="{ name: 'Parts', params: { id: bottomRightPromotion.category }}">
+                                <img :src="bottomRightPromotion.image" width="100%" />
+                                <span>{{bottomRightPromotion["name_" + lang]}}</span>
                             </router-link>
                          </div>
                      </div>
@@ -108,6 +108,15 @@ export default {
         },
         topPromotion: function() {
             return this.promotions.top[Math.floor(Math.random() * this.promotions.top.length)];
+        },
+        bottomLeftPromotion: function() {
+            return this.promotions.bottom.left[Math.floor(Math.random() * this.promotions.bottom.left.length)];
+        },
+        bottomCenterPromotion: function() {
+            return this.promotions.bottom.center[Math.floor(Math.random() * this.promotions.bottom.center.length)];
+        },
+        bottomRightPromotion: function() {
+            return this.promotions.bottom.right[Math.floor(Math.random() * this.promotions.bottom.right.length)];
         }
     },
     watch: {
@@ -130,7 +139,7 @@ export default {
         padding-left: 15px;
         padding-right: 0;
     }
-    #site-wrapper.heb .home-page .promotions .promo-categories img {
+    #site-wrapper.heb .home-page .promotions .promo-categories .top-promo img {
         -moz-transform: scaleX(-1);
         -o-transform: scaleX(-1);
         -webkit-transform: scaleX(-1);
@@ -146,15 +155,15 @@ export default {
     position: absolute;
     left: 5%;
     top: 50%;
-    font-size: 2.5em;
-    line-height: 2.5em;
-    margin-top: -1.25em;
+    font-size: 2.4em;
+    line-height: 2.4em;
+    margin-top: -1.2em;
     text-transform: uppercase;
     color: #fff;
 }
     #site-wrapper.heb .home-page .promotions .promo-categories .top-promo span {
         left: auto;
-        right: 8%;
+        right: 5%;
     }
 
 .home-page .promotions .promo-categories .bottom-promo {
@@ -172,8 +181,8 @@ export default {
 .home-page .promotions .promo-categories .bottom-promo > div.b-promo-1 span {
     position: absolute;
     left: 0;
+    right: 0;
     top: 50%;
-    width: 100%;
     margin-top: -1.2em;
     text-align: center;
     display: block;
@@ -183,33 +192,22 @@ export default {
     color: #000;
 }
 
-.home-page .promotions .promo-categories .bottom-promo > div.b-promo-2 span {
-    position: absolute;
-    left: 0;
-    top: 10%;
-    width: 100%;
-    text-align: center;
-    display: block;
-    font-size: 1.6em;
-    line-height: 1.6em;
-    text-transform: uppercase;
-    color: #000;
-}
-
+.home-page .promotions .promo-categories .bottom-promo > div.b-promo-2 span,
 .home-page .promotions .promo-categories .bottom-promo > div.b-promo-3 span {
     position: absolute;
     left: 0;
-    top: 10%;
-    width: calc(100% - 12px);
+    right: 0;
+    top: 0;
     text-align: center;
-    display: block;
     font-size: 1.6em;
-    line-height: 1.6em;
+    line-height: 1.1;
     text-transform: uppercase;
-    color: #fff;
-    background-color: rgba(0,0,0, 0.5);
-    margin: 0 6px;
-    padding: 5px 10px;
+    color: #000;
+    height: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 15px;
 }
 
 .home-page .promotions .top-sellers {
@@ -374,14 +372,10 @@ export default {
         line-height: 2.2em;
     }
 
-    .home-page .promotions .promo-categories .bottom-promo > div.b-promo-2 span {
-        font-size: 1.4em;
-        line-height: 1.4em;
-    }
-
+    .home-page .promotions .promo-categories .bottom-promo > div.b-promo-2 span,
     .home-page .promotions .promo-categories .bottom-promo > div.b-promo-3 span {
         font-size: 1.4em;
-        line-height: 1.4em;
+        line-height: 1.1;
     }
 }
 
@@ -402,14 +396,10 @@ export default {
         line-height: 2.2em;
     }
 
-    .home-page .promotions .promo-categories .bottom-promo > div.b-promo-2 span {
-        font-size: 1.4em;
-        line-height: 1.4em;
-    }
-
+    .home-page .promotions .promo-categories .bottom-promo > div.b-promo-2 span,
     .home-page .promotions .promo-categories .bottom-promo > div.b-promo-3 span {
         font-size: 1.4em;
-        line-height: 1.4em;
+        line-height: 1.1;
     }
 
     .home-page .promotions .top-sellers .topsellers-carousel .part-wrapper {

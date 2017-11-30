@@ -20,27 +20,54 @@
             }
         ],
         "bottom": {
-            "left": {
-                "image": "/static/images/banner_02.jpg",
-                "name_en": "Speakers",
-                "name_ru": "Динамики",
-                "name_he": "רמקולים",
-                "category": 62
-            },
-            "center": {
-                "image": "/static/images/banner_03.jpg",
-                "name_en": "Monitors",
-                "name_ru": "Мониторы",
-                "name_he": "מסכים",
-                "category": 26
-            },
-            "right": {
-                "image": "/static/images/banner_04.jpg",
-                "name_en": "Hard Drives",
-                "name_ru": "Жесткие диски",
-                "name_he": "כוננים קשיחים",
-                "category": 11
-            }
+            "left": [
+                {
+                    "image": "/static/images/banners/banner_02_01.jpg",
+                    "name_en": "Speakers",
+                    "name_ru": "Динамики",
+                    "name_he": "רמקולים",
+                    "category": 62
+                },
+                {
+                    "image": "/static/images/banners/banner_02_02.jpg",
+                    "name_en": "Processors",
+                    "name_ru": "Процессоры",
+                    "name_he": "מעבדים",
+                    "category": 1
+                }
+            ],
+            "center": [
+                {
+                    "image": "/static/images/banners/banner_03_01.jpg",
+                    "name_en": "Monitors",
+                    "name_ru": "Мониторы",
+                    "name_he": "מסכים",
+                    "category": 26
+                },
+                {
+                    "image": "/static/images/banners/banner_03_02.jpg",
+                    "name_en": "Mouses",
+                    "name_ru": "Мыши",
+                    "name_he": "עכברים",
+                    "category": 30
+                }
+            ],
+            "right": [
+                {
+                    "image": "/static/images/banners/banner_04_01.jpg",
+                    "name_en": "Hard Drives",
+                    "name_ru": "Жесткие диски",
+                    "name_he": "כוננים קשיחים",
+                    "category": 11
+                },
+                {
+                    "image": "/static/images/banners/banner_04_02.jpg",
+                    "name_en": "Keyboards",
+                    "name_ru": "Клавиатуры",
+                    "name_he": "מקלדות",
+                    "category": 29
+                }
+            ]
         }
     }
 }
