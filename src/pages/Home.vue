@@ -153,17 +153,22 @@ export default {
 }
 .home-page .promotions .promo-categories .top-promo span {
     position: absolute;
-    left: 5%;
-    top: 50%;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 35%;
     font-size: 2.4em;
-    line-height: 2.4em;
-    margin-top: -1.2em;
+    line-height: 1;
     text-transform: uppercase;
     color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 15px;
 }
     #site-wrapper.heb .home-page .promotions .promo-categories .top-promo span {
         left: auto;
-        right: 5%;
+        right: 0;
     }
 
 .home-page .promotions .promo-categories .bottom-promo {
