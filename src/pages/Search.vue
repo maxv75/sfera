@@ -24,6 +24,7 @@
             </div>
         </div>
     </div>
+    <div v-if="isError">Error loading search results</div>
   </div>
 </template>
 
@@ -38,6 +39,7 @@ export default {
         return {
             loading: false,
             parts: null,
+            isError: false,
             searchValue: this.query
         }
     },
@@ -57,10 +59,13 @@ export default {
         fetchData () {
             this.loading = true;
             console.log(this.searchValue);
-            this.$http.get('api/parts/search', {params: {s: this.searchValue}}).then(response => {
-                this.loading = false;
-                this.parts = response.data;
-            });
+            this.$http.get('api/parts/search', {params: {s: this.searchValue}})
+                .then(response => {
+                    this.loading = false;
+                    this.parts = response.data;
+                }).catch(error => {
+                    this.isError = true;
+                });
         },
         keyup (event) {
             if(event.key == "Enter") {

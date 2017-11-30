@@ -12,7 +12,7 @@
                 </template>
             </li>
         </ul>
-        <div id="closeMenu" @click="toggleMenu(true)"><span>{{closeMenuText}}</span><span v-bind:class="{ 'glyphicon-chevron-down': closed, 'glyphicon-chevron-up': !closed }" class="glyphicon"></span>{{$t('categories.menu')}}</div>
+        <div id="closeMenu" @click="toggleMenu(true)"></div>
     </div>
 </template>
 
@@ -95,15 +95,9 @@ a.router-link-active {
     
 }
 #closeMenu {
-    padding: 5px 0;
-    text-align: center;
-    color: #004264;
+    height: 31px;
+    background: url('/static/images/menu-close.png') 50% 50% no-repeat;
     cursor: pointer;
-    line-height: 1.5;
-}
-#closeMenu .glyphicon {
-    margin: 0 6px;
-    font-size: 0.8em;
 }
 
 ul.level1 {
@@ -111,7 +105,7 @@ ul.level1 {
     padding: 0;
     list-style: none;
     color: #fff;
-    padding: 30px 0 0;
+    padding: 30px 0 10px;
     text-align: center;
 }
 ul.level1 > li {

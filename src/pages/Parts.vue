@@ -1,6 +1,6 @@
 <template>
   <div class="parts-page">
-    <div v-if="parts && !loading" class="content container">
+    <div v-if="parts && (!loading || isSamePage)" class="content container">
         <h3 class="page-title"><span><template v-if="parts.category.top_id">{{ parts.category['top_name_' + lang] }} - </template>{{ parts.category['name_' + lang] }}</span></h3>
         <div class="clearfix" v-if="parts && parts.parts.length > 0">
             <div id="partsFilter">
@@ -49,20 +49,22 @@ export default {
     data () {
         return {
             loading: false,
+            isSamePage: false,
             parts: [],
             brandFilter: "",
             priceFilter: ""
         }
     },
     created () {
-        // fetch the data when the view is created and the data is
-        // already being observed
         this.fetchData();
     },
     beforeRouteUpdate (to, from, next) {
         if(!to.params || !to.params.id || isNaN(to.params.id)) {
             next(false);
         } else {
+            if(from.name === to.name) {
+                this.isSamePage = true;
+            }
             next();
         }
     },
@@ -73,13 +75,12 @@ export default {
     methods: {
         fetchData (transition) {
             this.loading = true;
-                // replace `getPost` with your data fetching util / API wrapper
+
             this.$http.get('api/categories/' + this.$route.params.id +  '/parts').then(response => {
                 this.loading = false;
                 this.brandFilter = "";
                 this.priceFilter = "";
                 this.parts = response.data;
-                //transition.next();
             }, response => {
                 this.$router.replace('/404');
             });
@@ -104,7 +105,6 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #partsFilter {
     height: 40px;

@@ -3,13 +3,22 @@
     "BaseAPIUrl": "https://new.sfera.co.il/",
     "StoreMapUrl": "https://www.google.com/maps/embed/v1/place?key=AIzaSyD0aV-RzfYDV0CvT0CqoAWtjnqKZmwRCI0&q=Sokolov+St+85,+Holon&language=",
     "promotions": {
-        "top": {
-            "image": "/static/images/banner_01.jpg",
-            "name_en": "Laptops",
-            "name_ru": "Ноутбуки",
-            "name_he": "מחשבים ניידים",
-            "category": 42
-        },
+        "top": [
+            {
+                "image": "/static/images/banners/banner_01_01.jpg",
+                "name_en": "Laptops",
+                "name_ru": "Ноутбуки",
+                "name_he": "מחשבים ניידים",
+                "category": 42
+            },
+            {
+                "image": "/static/images/banners/banner_01_02.jpg",
+                "name_en": "Software",
+                "name_ru": "Программы",
+                "name_he": "תוכנה",
+                "category": 58
+            }
+        ],
         "bottom": {
             "left": {
                 "image": "/static/images/banner_02.jpg",

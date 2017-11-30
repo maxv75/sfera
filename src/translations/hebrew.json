@@ -39,7 +39,7 @@
             "address": "סוקולוב 85, חולון",
             "phone": "טלפון",
             "hoursTitle": "שעות פעילות",
-            "hours": "א-ה: <span dir='ltr'>10:00&mdash;20:00</span><br />ימי שישי וערבי חג: <span dir='ltr'>10:00&mdash;14:00</span>"
+            "hours": "א,ב,ד,ה: <span dir='ltr'>9:00-14:00, 16:00-20:00</span><br />שלישי ושישי: <span dir='ltr'>9:00-14:00</span>"
         },
         "contactUs": {
             "title": "צור קשר",

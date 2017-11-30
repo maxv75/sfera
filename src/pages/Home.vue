@@ -8,9 +8,9 @@
              <div class="container">
                  <div class="col-md-8 promo-categories">
                      <div class="top-promo">
-                         <router-link :to="{ name: 'Parts', params: { id: promotions.top.category }}">
-                            <img :src="promotions.top.image" width="100%" />
-                            <span>{{promotions.top["name_" + lang]}}</span>
+                         <router-link :to="{ name: 'Parts', params: { id: topPromotion.category }}">
+                            <img :src="topPromotion.image" width="100%" />
+                            <span>{{topPromotion["name_" + lang]}}</span>
                          </router-link>
                      </div>
                      <div class="bottom-promo">
@@ -65,6 +65,8 @@ export default {
     created () {
         this.promotions = this.$config.promotions;
         this.getTopSellers();
+        console.log(this.promotions.top);
+        console.log(this.promotions.top.length);
     },
     methods: {
         getTopSellers () {
@@ -103,6 +105,9 @@ export default {
         },
         isLastTopSeller: function () {
             return this.topsellers.length == 1 || this.topSellersIndex == this.topsellers.length - 1;
+        },
+        topPromotion: function() {
+            return this.promotions.top[Math.floor(Math.random() * this.promotions.top.length)];
         }
     },
     watch: {
@@ -139,9 +144,11 @@ export default {
 }
 .home-page .promotions .promo-categories .top-promo span {
     position: absolute;
-    left: 8%;
-    top: 20%;
+    left: 5%;
+    top: 50%;
     font-size: 2.5em;
+    line-height: 2.5em;
+    margin-top: -1.25em;
     text-transform: uppercase;
     color: #fff;
 }
@@ -289,15 +296,21 @@ export default {
 
 .home-page .promotions .top-sellers .topsellers-carousel .part-wrapper {
     height: 381px;
-    padding: 10px 30px 20px;
+    margin: 0 -15px;
+    background-color: #CFD7DA;
     text-align: center;
     position: relative;
     cursor: pointer;
 }
 
+.home-page .promotions .top-sellers .topsellers-carousel .part-wrapper .part-info {
+    padding: 20px 30px;
+}
+
 .home-page .promotions .top-sellers .topsellers-carousel .part-wrapper .part-image {
-    height: 180px;
-    margin-bottom: 20px;
+    height: 240px;
+    padding: 5px 30px 30px;
+    background-color: #fff;
 }
 .home-page .promotions .top-sellers .topsellers-carousel .part-wrapper .part-image img {
     max-width: 100%;
@@ -307,13 +320,13 @@ export default {
 .home-page .promotions .top-sellers .topsellers-carousel .part-wrapper h4 {
     font-size: 1.4em;
     font-weight: 500;
-    margin: 0 0 10px;
+    margin: 0 0 5px;
 }
 
 .home-page .promotions .top-sellers .topsellers-carousel .part-wrapper .part-name {
-    height: 80px;
+    height: 45px;
     font-size: 1.2em;
-    font-weight: 300;
+    font-weight: 400;
     color: #333;
 }
 
@@ -401,29 +414,28 @@ export default {
 
     .home-page .promotions .top-sellers .topsellers-carousel .part-wrapper {
         height: 300px;
-        padding: 10px 30px 20px;
+    }
+    .home-page .promotions .top-sellers .topsellers-carousel .part-wrapper .part-info {
+        padding: 15px 30px;
     }
     .home-page .promotions .top-sellers .topsellers-carousel .part-wrapper .part-image {
-        height: 130px;
-        margin-bottom: 15px;
+        height: 180px;
+        padding: 0 30px 25px;
     }
     .home-page .promotions .top-sellers .topsellers-carousel .part-wrapper h4 {
         font-size: 1.2em;
-        font-weight: 500;
-        margin: 0 0 10px;
+        margin: 0 0 5px;
     }
 
     .home-page .promotions .top-sellers .topsellers-carousel .part-wrapper .part-name {
-        height: 60px;
+        height: 40px;
         font-size: 1.1em;
-        font-weight: 300;
         color: #333;
     }
 
     .home-page .promotions .top-sellers .topsellers-carousel .part-wrapper .part-price {
         margin-top: 10px;
         font-size: 1.2em;
-        font-weight: 500;
     }
 }
 </style>

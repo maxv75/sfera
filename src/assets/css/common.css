@@ -306,8 +306,9 @@ h3.page-title span {
 
         .parts-container.topsellers .part-wrapper {
             height: 440px;
-            padding: 30px 30px 20px;
-            background-color: #fff;
+            /* padding: 30px 30px 20px; */
+            padding: 0;
+            background-color: #CFD7DA;
             border: 1px solid #dcdcdc;
         }
 
@@ -324,9 +325,14 @@ h3.page-title span {
     padding: 40px 0;
 }
 
+.parts-container.topsellers .part-wrapper .part-info {
+    padding: 20px 30px;
+}
 .parts-container.topsellers .part-wrapper .part-image {
-    height: 220px;
-    margin-bottom: 20px;
+    height: 300px;
+    padding: 40px 30px 40px;
+    margin-bottom: 0;
+    background-color: #fff;
 }
 .parts-container.topsellers .part-wrapper .part-image img {
     max-width: 100%;
@@ -345,7 +351,8 @@ h3.page-title span {
     font-weight: 300;
 }
 .parts-container.topsellers .part-wrapper .part-name {
-    height: 90px;
+    height: 45px;
+    font-weight: 400;
 }
 
 .parts-container .part-wrapper .part-price {
