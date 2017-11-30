@@ -1,5 +1,6 @@
 {
     "title": "Sphere Computers",
+    "loading": "Загрузка...",
     "menu": {
         "home": "Главная",
         "about": "О нас"

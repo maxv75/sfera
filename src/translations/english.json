@@ -1,5 +1,6 @@
 {
     "title": "Sphere Computers",
+    "loading": "Loading...",
     "menu": {
         "home": "Home",
         "about": "About"

@@ -1,5 +1,6 @@
 <template>
     <div id="site-wrapper" v-bind:class="{ 'heb': lang == 'he' }">
+        <div id="loading" v-if="loading">{{$t('loading')}}</div>
         <header>
             <nav class="navbar navbar-default container">
                 <div class="nav-container">
