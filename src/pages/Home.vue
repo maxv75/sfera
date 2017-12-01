@@ -65,8 +65,6 @@ export default {
     created () {
         this.promotions = this.$config.promotions;
         this.getTopSellers();
-        console.log(this.promotions.top);
-        console.log(this.promotions.top.length);
     },
     methods: {
         getTopSellers () {

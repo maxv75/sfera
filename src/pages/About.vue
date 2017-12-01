@@ -114,12 +114,26 @@
                         for (var field in this.form) {
                             this.form[field] = '';
                         }
-
+                        // Send analytics event
+                        this.$ga.event({
+                            eventCategory: 'ContactUs',
+                            eventAction: 'sendform',
+                            eventLabel: 'success',
+                            eventValue: 1
+                        });
                         this.showSuccess();
                     } else if(data.errors.length > 0) {
                         let errors = [];
                         data.errors.forEach(function(error) {
                             errors.push(vm.$t('about.contactUs.validation.' + error));
+                        });
+
+                        // Send analytics event
+                        this.$ga.event({
+                            eventCategory: 'ContactUs',
+                            eventAction: 'sendform',
+                            eventLabel: 'success',
+                            eventValue: 0
                         });
 
                         vm.showErrors(vm.$t('about.contactUs.validation.header'), vm.$t('about.contactUs.validation.footer'), errors, true);

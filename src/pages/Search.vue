@@ -58,7 +58,14 @@ export default {
     methods: {
         fetchData () {
             this.loading = true;
-            console.log(this.searchValue);
+
+            this.$ga.event({
+                eventCategory: 'Search',
+                eventAction: 'search',
+                eventLabel: this.searchValue,
+                eventValue: 1
+            });
+
             this.$http.get('api/parts/search', {params: {s: this.searchValue}})
                 .then(response => {
                     this.loading = false;

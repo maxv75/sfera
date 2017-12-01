@@ -30,7 +30,8 @@
                 isOpened: false,
                 lineHeight: 0,
                 fullHeight: 0,
-                isLoaded: false
+                isLoaded: false,
+                isAnalyticsSent: false
             }
         },
         created () {
@@ -76,6 +77,16 @@
                 } else {
                     $('#sales').animate({'height': this.fullHeight }, 500, function() {
                         vm.isOpened = true;
+
+                        if(!vm.isAnalyticsSent) {
+                            this.$ga.event({
+                                eventCategory: 'Sales',
+                                eventAction: 'open',
+                                eventLabel: 'HomePage Sales',
+                                eventValue: 1
+                            });
+                            vm.isAnalyticsSent = true;
+                        }
                     });
                 }
             }

@@ -5,6 +5,7 @@ import VueResource from 'vue-resource'
 import Vuex from 'vuex'
 import vuexI18n from 'vuex-i18n'
 import vueConfig from 'vue-config'
+import VueAnalytics from 'vue-analytics'
 
 import App from './App'
 import router from './router'
@@ -14,6 +15,10 @@ Vue.config.productionTip = false;
 
 Vue.use(VueResource);
 Vue.use(Vuex);
+Vue.use(VueAnalytics, {
+    id: 'UA-9461395-1',
+    router
+});
 
 // Initialize store
 const store = new Vuex.Store(appStore);
