@@ -79,7 +79,7 @@
                         vm.isOpened = true;
 
                         if(!vm.isAnalyticsSent) {
-                            this.$ga.event({
+                            vm.$ga.event({
                                 eventCategory: 'Sales',
                                 eventAction: 'open',
                                 eventLabel: 'HomePage Sales',
