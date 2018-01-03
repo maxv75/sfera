@@ -47,7 +47,6 @@
            
         },
         beforeRouteEnter (to, from, next) {
-            let vm = this;
             next(vm => {
                 // Save referrer page for back action
                 vm.referrer = from.name;
