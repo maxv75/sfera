@@ -42,9 +42,14 @@
                 <div>
                 &copy;2005-{{ (new Date()).getFullYear() }} {{$t('title')}}
                 </div>
+                <div class="line-break2"></div>
+                <div class="footer-designer" v-html="$t('footer.designedby')">
+                </div>
+                <div class="line-break"></div>
                 <div class="footer-address">
                     <label>{{$t('about.shopInfo.addressTitle')}}:</label><span>{{$t('about.shopInfo.address')}}</span>
                 </div>
+                <div class="line-break2"></div>
                 <div class="footer-phone">
                     <label>{{$t('about.shopInfo.phone')}}:</label><span>03-5042253</span>
                 </div>

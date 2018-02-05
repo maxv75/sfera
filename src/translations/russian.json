@@ -5,6 +5,9 @@
         "home": "Главная",
         "about": "О нас"
     },
+    "footer": {
+        "designedby": "Designed by <a href='https://tayakis.myportfolio.com/' target='_blank'>Taisiya Kislov</a>"
+    },
     "categories": {
         "menu": "меню",
         "open": "показать",
