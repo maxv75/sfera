@@ -12,7 +12,7 @@
                     </option>
                 </select>
                 <label>{{ $t('parts.filter.price') }}</label> 
-                <select v-model="priceFilter">
+                <select class="price-filter" v-model="priceFilter">
                     <option value="">{{ $t('parts.filter.allPrices') }}</option>
                     <option v-for="option in parts.prices"  :value="option" :key="option">
                         {{ option }}
@@ -161,4 +161,33 @@ export default {
         margin-right: 0;
         margin-left: 25px;
     }
+
+@media (max-width: 540px) {
+    #partsFilter {
+        padding-left: 10px;
+        float: none;
+        height: auto;
+    }
+        #partsFilter::before {
+            display: none;
+        }
+        #site-wrapper.heb #partsFilter {
+            padding-left: 0;
+            padding-right: 5px;
+        }
+
+    #partsFilter label {
+        margin-right: 7px;
+        width: 105px;
+    }
+        #site-wrapper.heb #partsFilter label {
+            margin-right: 0;
+            margin-left: 7px;
+        }
+
+    #partsFilter select {
+        width: 150px;
+        margin-bottom: 10px;
+    }
+}
 </style>

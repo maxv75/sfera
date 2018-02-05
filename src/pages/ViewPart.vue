@@ -9,7 +9,7 @@
                     <div v-if="info.image"><a id="btnZoom" @click.prevent="zoomImage" v-bind:href="PicturesFolder + info.image">{{$t('part.zoom')}}</a></div>
                 </div>
                 <div class="col-md-8">
-                    <div class="clearfix"><button type="button" @click="goBack" class="btn btn-primary" v-bind:class="{ 'pull-right': lang != 'he', 'pull-left': lang == 'he' }">{{$t('part.back')}}</button></div>
+                    <div class="back-btn-wrapper clearfix"><button type="button" @click="goBack" class="btn btn-primary" v-bind:class="{ 'pull-right': lang != 'he', 'pull-left': lang == 'he' }">{{$t('part.back')}}</button></div>
                     <div class="clearfix">
                         <h4>{{info.name}}</h4>
                         <div class="viewpart-price">{{ info.is_sale == '1' ? info.sale_price : info.price }} &#8362;</div>
@@ -20,6 +20,7 @@
                         <div v-if="info.warranty" class="viewpart-warranty" :class="{ 'separator': info.link }">{{ $t('part.warranty', { 'warranty': info.warranty }, parseInt(info.warranty)) }}</div>
                         <div v-if="info.link" class="viewpart-link"><a :href="info.link" target="_blank">{{$t('part.link')}}</a></div>
                     </div>
+                    <div class="back-btn-wrapper-mobile"><button type="button" @click="goBack" class="btn btn-primary">{{$t('part.back')}}</button></div>
                 </div>
             </div>
             
@@ -228,4 +229,76 @@
             left: auto;
             right: 0;
         }
+
+    .viewpart-container .back-btn-wrapper-mobile {
+        display: none;
+        text-align: center;
+        padding-top: 30px;
+    }
+
+@media (max-width: 540px) {
+    .viewpart-container {
+        margin-bottom: 30px;
+    }
+    
+    .viewpart-container .viewpart-image {
+        padding-top: 20px;
+    }
+    .viewpart-container .viewpart-image img {
+        max-width: 75%;
+    }
+    .viewpart-container .viewpart-image div {
+        display: none;
+    }
+
+    .viewpart-container h4 {
+        margin-top: 40px;
+        float: none;
+    }
+        #site-wrapper.heb .viewpart-container h4 {
+            float: none;
+        }
+
+    .viewpart-container .viewpart-price {
+        margin-top: 15px;
+        margin-bottom: 25px;
+        float: none;
+    }
+        #site-wrapper.heb .viewpart-container .viewpart-price {
+            float: none;
+        }
+
+    .viewpart-container .viewpart-warranty {
+        padding-right: 0;
+        display: block;
+        margin-bottom: 8px;
+    }
+        .viewpart-container .viewpart-warranty.separator {
+            border-right: none;
+        }
+        #site-wrapper.heb .viewpart-container .viewpart-warranty {
+            padding-left: 0;
+            display: block;
+        }
+            #site-wrapper.heb .viewpart-container .viewpart-warranty.separator {
+                border-right: none;
+                border-left: none;
+            } 
+
+    .viewpart-container .viewpart-link {
+        padding-left: 0;
+        display: block;
+    }
+        #site-wrapper.heb .viewpart-container .viewpart-link {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+    .viewpart-container .back-btn-wrapper {
+        display: none;
+    }
+    .viewpart-container .back-btn-wrapper-mobile {
+        display: block;
+    }
+}
 </style>

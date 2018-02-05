@@ -353,6 +353,16 @@ export default {
     display: inline-block;
 }
 
+@media (max-width: 540px) {
+    .home-page .promotions {
+        background-color: #fff;
+        padding: 0 0 20px;
+    }
+    .home-page .promotions .promo-categories {
+        display: none;
+    }
+}
+
 @media (max-width: 992px) {
     .home-page .promotions .promo-categories .top-promo span {
         left: 6%;

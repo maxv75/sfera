@@ -540,6 +540,24 @@ h3.topsellers-title span {
     }
 }
 
+@media (max-width: 540px) {
+    h3.page-title span {
+        padding:0 25px; 
+    }
+    .parts-container .part-wrapper {
+        width: 98%;
+        margin-right: 2%;
+        margin-top: 3%;
+        border-left: none;
+        border-right: none;
+        border-bottom: none;
+        padding-top: 25px;
+    }
+    .parts-container .part-wrapper:first-child {
+        border-top: none;
+    }
+}
+
 @media (min-width: 768px) {
     .parts-container .part-wrapper {
         width: 31.33333%;

@@ -212,42 +212,6 @@
     padding: 0;
 }
 
-@media (max-width: 768px) {
-    .about-page .contact-us-container {
-        background-image: url(/static/images/about-bg-splited-vertical.jpg);
-        background-position: 50% 50%;
-        background-size: auto; 
-    }
-
-    .about-page .contact-us-container .container {
-        padding: 0;
-    }
-}
-
-@media (min-width: 768px) {
-    .about-page .contact-us-container {
-        background-image: url(/static/images/about-bg-splited-vertical.jpg);
-        background-position: 50% 50%;
-        background-size: 100% auto; 
-    }
-
-    .about-page .contact-us-container .container {
-        padding: 0;
-    }
-}
-
-@media (min-width: 992px) {
-    .about-page .contact-us-container {
-        background-image: url(/static/images/about-bg-splited.jpg);
-        background-position: 50% 70%;
-        background-size: 100% auto; 
-    }
-
-    .about-page .contact-us-container .container {
-        padding: 0 15px;
-    }
-}
-
 .about-page .contact-us-wrapper {
     padding: 30px 40px 40px;
     /* background-color: rgba(0, 0, 0, 0.6); */
@@ -348,5 +312,120 @@
     margin-left: 0;
     margin-right: 5px;
     text-shadow: -1px 1px 1px rgba(0, 0, 0, 0.75);
+}
+
+@media (max-width: 768px) {
+    .about-page .contact-us-container {
+        background-image: url(/static/images/about-bg-splited-vertical.jpg);
+        background-position: 50% 50%;
+        background-size: auto; 
+    }
+
+    .about-page .contact-us-container .container {
+        padding: 0;
+    }
+}
+
+@media (max-width: 540px) {
+    .about-page h3.page-title {
+        margin: 50px 0;
+    }
+    
+    .about-page .contact-us-wrapper {
+        padding: 15px 30px 40px;
+    }
+
+    .about-page .contact-us-wrapper h4 { 
+        margin-bottom: 25px;
+    }
+
+    .about-page .contact-us-wrapper h4 span {
+        margin: 0 25px;
+    }
+    
+    .about-page .address-wrapper {
+        padding-top: 50px;
+        height: 405px;
+    }
+
+    .about-page .address-wrapper .info-item {
+        margin: 0 3%;
+        margin-top: 20px;
+    }
+
+    .about-page .address-wrapper .info-item .info-item-icon {
+        width: 85px;
+        height: 85px;
+    }
+
+    .about-page .address-wrapper .info-item .info-item-data {
+        height: 85px;
+        padding-top: 19px;
+    }
+        .about-page .address-wrapper .info-item .info-item-data.hours {
+            padding-top: 10px;
+        }
+
+    .about-page .contact-us-wrapper .mandatory {
+        margin-top: 0;
+        margin-bottom: 13px;
+    }
+}
+
+@media (max-width: 380px) {
+    .about-page .address-wrapper {
+        padding-top: 60px;
+        height: 390px;
+    }
+    
+    .about-page .address-wrapper .info-item .info-item-icon {
+        width: 70px;
+        height: 70px;
+    }
+
+    .about-page .address-wrapper .info-item .info-item-data {
+        height: 70px;
+        padding-top: 16px;
+    }
+        .about-page .address-wrapper .info-item .info-item-data.hours {
+            padding-top: 8px;
+        }
+
+        .about-page .address-wrapper .info-item {
+            margin: 0 3%;
+            margin-top: 20px;
+        }
+
+    .about-page .address-wrapper .info-item .info-item-data h5 {
+        margin: 0 0 3px;
+        font-size: 1.4em;
+    }
+    .about-page .address-wrapper .info-item .info-item-data p {
+        font-size: 0.9em;
+    }
+}
+
+@media (min-width: 768px) {
+    .about-page .contact-us-container {
+        background-image: url(/static/images/about-bg-splited-vertical.jpg);
+        background-position: 50% 50%;
+        background-size: 100% auto; 
+    }
+
+    .about-page .contact-us-container .container {
+        padding: 0;
+    }
+}
+
+@media (min-width: 992px) {
+    .about-page .contact-us-container {
+        background-image: url(/static/images/about-bg-splited.jpg);
+        background-position: 50% 70%;
+        background-size: 100% auto; 
+    }
+
+    .about-page .contact-us-container .container {
+        padding: 0 15px;
+    }
 }
 </style>

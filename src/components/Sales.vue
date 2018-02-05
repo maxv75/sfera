@@ -146,4 +146,10 @@
     .sales .sales-open button.opened i {
         background-image: url('/static/images/arr-up.jpg');
     }
+
+@media (max-width: 540px) {
+    .sales .sales-open {
+        padding: 30px 0 40px;
+    }
+}
 </style>

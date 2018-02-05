@@ -136,4 +136,10 @@ export default {
     font-size: 21px;
     line-height: 21px;
 }
+
+@media (max-width: 540px) {
+    .search-input-wrapper {
+        width: 100%;
+    }
+}
 </style>
