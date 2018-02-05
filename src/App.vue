@@ -72,7 +72,8 @@
                 isMenuFixed: false,
                 menuTop: 0,
                 menuHeight: 0,
-                menuFullHeight: 0
+                menuFullHeight: 0,
+                isMenuAutoCollapse: true
             }
         },
         mounted () {
@@ -81,39 +82,45 @@
             this.menuTop = $_catMenu.offset().top;
             this.menuHeight = $_catMenu.outerHeight(true);
             this.menuFullHeight = $_catMenu.outerHeight(true);
+            this.isMenuAutoCollapse = $(window).width() > $(window).height();
             $(window).on('scroll', () => {
                 let scrollTop = $(window).scrollTop();
-                if(vm.isMenuFixed === false && scrollTop > vm.menuTop) {
-                    // Fix menu
-                    vm.isMenuFixed = true;
-                    // Add menu placeholder to avoid overall page height shrinking
-                    $('<div>')
-                        .attr('id', 'catMenuPlaceholder')
-                        .height(this.menuHeight)
-                        .insertBefore($_catMenu);
+                if(this.isMenuAutoCollapse) {
+                    if(vm.isMenuFixed === false && scrollTop > vm.menuTop) {
+                        // Fix menu
+                        vm.isMenuFixed = true;
+                        // Add menu placeholder to avoid overall page height shrinking
+                        $('<div>')
+                            .attr('id', 'catMenuPlaceholder')
+                            .height(this.menuHeight)
+                            .insertBefore($_catMenu);
 
-                    $_catMenu.addClass('fixed');
-                    if(!vm.$refs.catMenu.closed) {
-                        // Collapse menu on scroll
-                        vm.$refs.catMenu.toggleMenu();
-                    }
-                } else if(vm.isMenuFixed === true && scrollTop <= vm.menuTop) {
-                    // Restore menu to its initial position (non fixed)
-                    vm.isMenuFixed = false;
-                    $_catMenu.removeClass('fixed');
-                    $('#catMenuPlaceholder').remove();
+                        $_catMenu.addClass('fixed');
+                        if(vm.$refs.catMenu && !vm.$refs.catMenu.closed) {
+                            // Collapse menu on scroll
+                            vm.$refs.catMenu.toggleMenu();
+                        }
+                    } else if(vm.isMenuFixed === true && scrollTop <= vm.menuTop) {
+                        // Restore menu to its initial position (non fixed)
+                        vm.isMenuFixed = false;
+                        $_catMenu.removeClass('fixed');
+                        $('#catMenuPlaceholder').remove();
 
-                    if(vm.$refs.catMenu.closed && !vm.$refs.catMenu.isClosedByUser) {
-                        // Open menu on scroll to top only if its not be collapsed by user
-                        vm.$refs.catMenu.toggleMenu();
+                        if(vm.$refs.catMenu && vm.$refs.catMenu.closed && !vm.$refs.catMenu.isClosedByUser) {
+                            // Open menu on scroll to top only if its not be collapsed by user
+                            vm.$refs.catMenu.toggleMenu();
+                        }
                     }
                 }
             });
             $(window).on('resize', () => {
-                this.menuHeight = $_catMenu.outerHeight(true);
-                this.menuFullHeight = $_catMenu.outerHeight(true);
-                if(vm.isMenuFixed) {
-                    $('#catMenuPlaceholder').height(this.menuHeight);
+                this.isMenuAutoCollapse = $(window).width() > $(window).height();
+                if(this.isMenuAutoCollapse) {
+                    this.menuHeight = $_catMenu.outerHeight(true);
+                    this.menuFullHeight = $_catMenu.outerHeight(true);
+                    if(vm.isMenuFixed) {
+                        $('#catMenuPlaceholder').height(this.menuHeight);
+                    }
                 }
             });
         },
