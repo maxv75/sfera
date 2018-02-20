@@ -4,6 +4,7 @@
         <header>
             <nav class="navbar navbar-default container">
                 <div class="nav-container">
+                    <div id="hamburger" @click="showMenu"></div>
                     <ul class="nav navbar-nav">
                         <li class="navbar-main">
                             <ol class="breadcrumb">
@@ -186,6 +187,9 @@
             },
             search (value) {
                 this.$router.push({ path: '/search', query: { q: value }})
+            },
+            showMenu () {
+                $('#categoriesMenu').toggle();
             }
 
         },
@@ -221,6 +225,10 @@ header {
     border: none;
     background-color: #f3f3f3;
     margin-bottom: 0;
+}
+
+.navbar-default .nav-container #hamburger {
+    display: none;
 }
 
 .navbar-default .navbar-nav li.navbar-main {
@@ -358,5 +366,87 @@ header {
     left: 0;
     right: 0;
     z-index: 5;
+}
+
+@media (max-width: 540px) {
+    .navbar-default .nav-container {
+        display: flex;
+        margin: 0 -15px;
+        background: #0096DB url('/static/images/logo-mobile.png') no-repeat;
+        background-position: right 10px center;
+        background-size: auto 85%;
+    }
+        #site-wrapper.heb .navbar-default .nav-container {
+            background-position: 10px center;
+        }
+
+    .navbar-default .nav-container #hamburger {
+        display: block;
+        width: 16px;
+        height: 11px;
+        background: url('/static/images/menu-close.png') center center no-repeat;
+        margin: 23px 15px 0;
+    }
+
+    #categoriesMenu {
+        position: relative;
+        display: none;
+    }
+
+    .navbar-default .navbar-nav {
+        margin: 0;
+    }
+
+    .navbar-default .navbar-nav .search {
+        display: none;
+    }
+
+    .navbar-default .navbar-nav li.navbar-main .breadcrumb {
+        background-color: #0096DB;
+    }
+
+    .navbar-default .navbar-nav li.navbar-main .breadcrumb > li a {
+        color: #fff;
+        text-decoration: none;
+    }
+    .navbar-default .navbar-nav li.navbar-main .breadcrumb > li a.router-link-exact-active,
+    .navbar-default .navbar-nav li.navbar-main .breadcrumb > li a.router-link-exact-active:active,
+    .navbar-default .navbar-nav li.navbar-main .breadcrumb > li a.router-link-exact-active:visited {
+        color: #005479;
+    }
+    .navbar-default .navbar-nav li.navbar-main .breadcrumb>li+li:before {
+        color: #fff;
+    }
+
+    .navbar-default .navbar-nav li.navbar-main .breadcrumb:after {
+        padding: 0 0 0 10px;
+        color: #fff;
+        content: "/\00a0";
+    }
+
+        #site-wrapper.heb .navbar-default .navbar-nav li.navbar-main .breadcrumb:after {
+            padding: 0 8px 0 0;
+        }
+
+    .navbar-default .navbar-nav > li.language-select ol {
+        background: #0096DB;
+        width: 50px;
+        border: none;
+    }
+    .navbar-default .navbar-nav > li.language-select ol li {
+        padding-left: 5px;
+        padding-right: 6px;
+        color: #fff;
+    }
+        #site-wrapper.heb .navbar-default .navbar-nav > li.language-select ol li {
+            padding-left: 6px;
+            padding-right: 5px;
+        }
+    .navbar-default .navbar-nav > li.language-select ol li:first-child {
+        color: #fff;
+    }
+    .navbar-default .navbar-nav > li.language-select ol li a {
+        color: #fff;
+    }
 }
 </style>

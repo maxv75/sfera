@@ -361,6 +361,11 @@ export default {
     .home-page .promotions .promo-categories {
         display: none;
     }
+
+    .home-page .promotions .top-sellers .topsellers-title span {
+        background: #efefef;
+        padding: 0;
+    }
 }
 
 @media (max-width: 992px) {

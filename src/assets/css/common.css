@@ -541,6 +541,10 @@ h3.topsellers-title span {
 }
 
 @media (max-width: 540px) {
+    .logo {
+        display: none;
+    }
+
     h3.page-title span {
         padding:0 25px; 
     }
@@ -555,6 +559,18 @@ h3.topsellers-title span {
     }
     .parts-container .part-wrapper:first-child {
         border-top: none;
+    }
+
+    h3.topsellers-title { 
+        border-bottom: none;
+        line-height: 1; 
+        margin: -15px -15px 30px;
+        padding: 10px 0 15px;
+        background-color: #efefef
+    } 
+    h3.topsellers-title span {
+        background-color:#efefef; 
+        padding: 0; 
     }
 }
 

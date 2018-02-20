@@ -228,4 +228,98 @@ ul.level1 li:hover ul.level2 {
 ul.level1 > li:hover ul.level2 li:hover {
     background-color: #0f8cd4;
 }
+
+@media (max-width: 540px) {
+    #menu-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: #0096DB;
+        z-index: 3;
+    }
+    
+    #closeMenu {
+        display: none;
+    }
+
+    ul.level1 {
+        margin: 0 -15px;
+    }
+
+    ul.level1 > li {
+        display: block;
+        margin-bottom: 0;
+        padding-left: 25px;
+    }
+
+    ul.level1 > li.expandable {
+        padding-left: 25px;
+    }
+        #site-wrapper.heb ul.level1 > li.expandable {
+            padding-left: 0;
+            padding-right: 25px;
+        }
+
+    ul.level1 > li.expandable:before {
+        top: 1.7em;
+        left: 12px;
+    }
+        #site-wrapper.heb ul.level1 > li.expandable:before {
+            left: 0;
+            right: 12px;
+        }
+
+    ul.level2 {
+        position: relative;
+        top: 0;
+        left: 0;
+        z-index: 9;
+        max-height: 120px;
+        margin-top: 5px;
+        margin-left: -25px;
+        margin-right: -15px;
+        padding: 5px 0;
+    }
+
+        #site-wrapper.heb ul.level2 {
+            margin-left: -15px;
+            margin-right: -25px;
+        }
+
+    ul.level2 li {
+        padding: 5px 25px;
+    }
+
+    ul.level1 li:hover {
+        background-color: #0096DB;
+    }
+
+    ul.level1 > li.expandable:hover {
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+    }
+        #site-wrapper.heb ul.level1 > li.expandable:hover {
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+        }
+
+    ul.level1 li:hover ul.level2 {
+        max-height: 120px;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+    }
+        #site-wrapper.heb ul.level1 li:hover ul.level2 {
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+        }
+    
+    ul.level1 > li:hover ul.level2 li:hover {
+        background-color: #55aae3;
+    }
+}
 </style>
