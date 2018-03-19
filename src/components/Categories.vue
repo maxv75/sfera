@@ -1,7 +1,7 @@
 <template>
     <div id="menu-wrapper" class="container">
         <ul class="level1 clearfix">
-            <li v-for="cat in categories" :key="cat.id" v-bind:class="{ 'expandable': cat.subcats.length > 0, 'link-active': isLinkActive(cat.id, cat.subcats) }">
+            <li v-for="cat in categories" :key="cat.id" v-bind:class="{ 'expandable': cat.subcats.length > 0, 'link-active': isLinkActive(cat.id, cat.subcats) }" @click="hideMenu()">
                 <template>
                     <router-link :to="{ name: 'Parts', params: { id: cat.id }}">{{ cat['name_' + lang] }}</router-link>
                     <ul class="level2" v-if="cat.subcats.length > 0">
@@ -71,6 +71,12 @@
                 return subcats.length > 0 && parent && subcats.some(function (subcat) {
                     return subcat.parent_id === parent;
                 });
+            },
+            hideMenu () {
+                if(window.matchMedia("(max-width: 540px)").matches) {
+                    $('#categoriesMenu').hide();
+                    $('#hamburger').removeClass('active');
+                }
             }
         },
         computed: {

@@ -190,6 +190,7 @@
             },
             showMenu () {
                 $('#categoriesMenu').toggle();
+                $('#hamburger').toggleClass('active');
             }
 
         },
@@ -386,6 +387,9 @@ header {
         height: 11px;
         background: url('/static/images/menu-close.png') center center no-repeat;
         margin: 23px 15px 0;
+    }
+    .navbar-default .nav-container #hamburger.active {
+        background: url('/static/images/menu-x.png') center center no-repeat;
     }
 
     #categoriesMenu {

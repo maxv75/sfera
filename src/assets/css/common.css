@@ -545,9 +545,19 @@ h3.topsellers-title span {
         display: none;
     }
 
-    h3.page-title span {
-        padding:0 25px; 
+    h3.page-title {
+        border-bottom: none;
+        margin: 0 -15px 30px;
+        font-size: 1.6em;
+        line-height: 1.2;
+        padding: 8px 0;
+        background-color: #f3f7fa;
     }
+        h3.page-title span {
+            padding: 0; 
+            background-color: #f3f7fa;
+        }
+
     .parts-container .part-wrapper {
         width: 98%;
         margin-right: 2%;
@@ -563,15 +573,14 @@ h3.topsellers-title span {
 
     h3.topsellers-title { 
         border-bottom: none;
-        line-height: 1; 
-        margin: -15px -15px 30px;
-        padding: 10px 0 15px;
-        background-color: #efefef
+        font-size: 1.6em;
+        line-height: 1.2; 
+        margin: -15px -15px 5px;
+        padding: 10px 0;
     } 
-    h3.topsellers-title span {
-        background-color:#efefef; 
-        padding: 0; 
-    }
+        h3.topsellers-title span {
+            padding: 0; 
+        }
 }
 
 @media (min-width: 768px) {

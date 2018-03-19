@@ -328,7 +328,7 @@
 
 @media (max-width: 540px) {
     .about-page h3.page-title {
-        margin: 50px 0;
+        margin: 50px -15px 0;
     }
     
     .about-page .contact-us-wrapper {

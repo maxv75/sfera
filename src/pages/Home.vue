@@ -354,6 +354,9 @@ export default {
 }
 
 @media (max-width: 540px) {
+    .home-page h3.page-title {
+        margin: 0 -15px 10px;
+    }
     .home-page .promotions {
         background-color: #fff;
         padding: 0 0 20px;
@@ -361,6 +364,11 @@ export default {
     .home-page .promotions .promo-categories {
         display: none;
     }
+
+    .home-page .promotions .top-sellers h3.topsellers-title { 
+        margin: -15px -15px 30px;
+        background-color: #efefef;
+    } 
 
     .home-page .promotions .top-sellers .topsellers-title span {
         background: #efefef;
