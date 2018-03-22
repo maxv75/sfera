@@ -243,6 +243,7 @@ ul.level1 > li:hover ul.level2 li:hover {
         right: 0;
         background-color: #0096DB;
         z-index: 3;
+        padding-top: 20px;
     }
     
     #closeMenu {

@@ -86,96 +86,93 @@ body {
     }
 }
 
-footer > div {
+footer .container {
     padding: 30px;
     font-size: 1em;
     font-weight: 400;
     color: #777;
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
-    footer > div > div {
-        padding: 3px 20px 3px 30px;
-        margin-right: 15px;
+    footer .container .width-100 {
+        width: 100%;
+        display: none;
+    }
+    footer .container .footer-col {
+        margin-right: 20px;
         background-size: contain;
     }
-        footer > div > div:first-child {
-            padding-left: 0;
-            border-right: 1px solid #ccc;
-        }
 
-        footer > div > div.line-break {
-            width: 100%;
-            padding: 0;
-            margin: 5px 0;
-            display: none;
-        }
+    footer .container .footer-copyright,
+    footer .container .footer-designer {
+        border-right: 1px solid #ccc;
+        padding: 3px 20px 3px 0;
+    }
 
-        footer > div > div.line-break2 {
-            width: 100%;
-            padding: 0;
-            margin: 5px 0;
-            display: none;
-        }
-
-        footer > div > div.footer-designer {
-            border-right: 1px solid #ccc;
-            padding-left: 5px;
-        }
-
-        footer > div > div.footer-designer a,
-        footer > div > div.footer-designer a:visited {
+        footer .container .footer-designer a,
+        footer .container .footer-designer a:visited {
             color: #777;
             text-decoration: underline;
         }
 
-        footer > div > div.footer-address {
+        footer .container .footer-address > div {
             background-image: url('/static/images/footer_ico1.png');
             background-position: 0 50%;
             background-repeat: no-repeat;
+            background-size: contain;
+            display: inline-block;
+            padding: 3px 20px 3px 30px;
         }
-        footer > div > div.footer-phone {
+        footer .container .footer-phone {
+            margin-right: 0;
+        }
+        footer .container .footer-phone > div {
             background-image: url('/static/images/footer_ico2.png');
             background-position: 0 50%;
             background-repeat: no-repeat;
+            background-size: contain;
+            display: inline-block;
+            padding: 3px 0 3px 30px;
         }
-        footer > div > div label {
+        footer .container .footer-col > div label {
             margin: 0;
             text-transform: uppercase;
             font-weight: 400;
             margin-right: 7px;
         }
-        footer > div > div span {
+        footer .container .footer-col > div span {
             font-weight: 500;
         }
 
-        #site-wrapper.heb footer > div > div {
-            padding-right: 30px;
-            padding-left: 20px;
+        #site-wrapper.heb footer .container .footer-col {
             margin-right: 0;
-            margin-left: 15px;
+            margin-left: 20px;
         }
 
-        #site-wrapper.heb footer > div > div:first-child {
-            padding-right: 0;
+        #site-wrapper.heb footer .container .footer-copyright,
+        #site-wrapper.heb footer .container .footer-designer {
             border-right: none;
             border-left: 1px solid #ccc;
+            padding: 3px 0 3px 20px;
         }
-        #site-wrapper.heb footer > div > div.footer-designer {
-            border-right: none;
-            border-left: 1px solid #ccc;
-            padding-right: 5px;
-        }
-        #site-wrapper.heb footer > div > div.footer-address,
-        #site-wrapper.heb footer > div > div.footer-phone {
+
+        #site-wrapper.heb footer .container .footer-address > div {
             background-position: 100% 50%;
+            padding: 3px 30px 3px 20px;
         }
-        #site-wrapper.heb footer > div > div label {
-            margin-right: 0;
-            margin-left: 7px;
+        #site-wrapper.heb footer .container .footer-phone {
+            margin-left: 0;
         }
-
-
+            #site-wrapper.heb footer .container .footer-phone > div {
+                background-position: 100% 50%;
+                padding: 3px 30px 3px 0;
+            }
+                #site-wrapper.heb footer .container .footer-col > div label {
+                    margin-right: 0;
+                    margin-left: 7px;
+                }
 
 .fade-enter-active, .fade-leave-active {
     transition: opacity .3s ease;
@@ -427,52 +424,23 @@ h3.topsellers-title span {
 }
 
 @media (max-width: 1200px) {
-    footer > div > div {
-        padding-left: 40px;
-        background-size: auto;
-    }
-
-    #site-wrapper.heb footer > div > div {
-        padding-right: 40px;
-    }
-
-    footer > div > div label {
+    footer .container .width-100 {
         display: block;
-    }
-}
-
-@media (max-width: 992px) {
-    footer > div {
-        flex-wrap: wrap;
-    }
-
-    footer > div > div {
-        padding: 3px 20px 3px 30px;
-        margin-right: 15px;
-        background-size: contain;
-    }
-
-    #site-wrapper.heb footer > div > div {
-        padding-right: 30px;
-        padding-left: 20px;
-        margin-right: 0;
-        margin-left: 15px;
-    }
-
-    footer > div > div.footer-designer {
+        height: 8px;
+	}
+	footer .container {
+		flex-wrap: wrap-reverse;
+	}
+	footer .container .footer-designer {
         border-right: none;
+        margin-right: 0;
+        padding-right: 0;
     }
 
-        #site-wrapper.heb footer > div > div.footer-designer {
-            border-left: none;
-        }
-
-    footer > div > div label {
-        display: inline;
-    }
-
-    footer > div > div.line-break {
-        display: block;
+    #site-wrapper.heb footer .container .footer-designer {
+        border-left: none;
+        margin-left: 0;
+        padding-left: 0;
     }
 }
 
@@ -492,52 +460,31 @@ h3.topsellers-title span {
 }
 
 @media (max-width: 600px) {
-    footer > div {
-        flex-wrap: wrap;
-    }
-
-    footer > div > div {
-        padding: 3px 0 3px 30px;
+    footer .container {
+		flex-direction: column-reverse;
+	}
+	footer .container .footer-col {
+		border-right: none;
+		padding: 3px 0;
+		text-align: center;
         margin-right: 0;
-        background-size: contain;
+        margin-bottom: 5px;
     }
-
-        #site-wrapper.heb footer > div > div {
-            padding: 3px 30px 3px 0;
-            margin-right: 0;
-            margin-left: 0;
+    footer .container .footer-address > div {
+        padding-right: 0;
+    }
+    footer .container .width-100 {
+        display: none;
+    }
+    
+    #site-wrapper.heb footer .container .footer-col {
+		border-left: none;
+        margin-left: 0;
+        padding: 3px 0;
+    }
+        #site-wrapper.heb footer .container .footer-address > div {
+            padding-left: 0;
         }
-
-    footer > div > div:first-child {
-        border: none;
-        padding-left: none;
-    }
-
-        #site-wrapper.heb footer > div > div:first-child {
-            border: none;
-            padding-right: none;
-        }
-
-    footer > div > div.line-break2 {
-        display: block;
-    }
-
-    footer > div > div.footer-designer {
-        border-right: none;
-        padding-left: none;
-    }
-        #site-wrapper.heb footer > div > div.footer-designer {
-            border-left: none;
-            padding-right: none;
-        }
-
-    footer > div > div label {
-        display: inline;
-    }
-
-    footer > div > div.line-break {
-        display: block;
-    }
 }
 
 @media (max-width: 540px) {

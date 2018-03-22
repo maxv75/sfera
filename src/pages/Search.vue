@@ -15,7 +15,7 @@
         <span v-if="!loading && partsLength == 0">{{ $t('search.notfound', { 'query': query }) }}</span>
     </div>
     <div v-if="parts && !loading" class="content search-content">
-        <div v-for="item in parts">
+        <div v-for="item in parts" :key="item.category['name_en']">
             <h3>{{ $t('search.category', { 'category': item.category['name_' + lang], 'count': item.parts.length }, item.parts.length) }}</h3>
             <div class="parts-container clearfix">
                 <template v-for="part in item.parts">

@@ -31,6 +31,9 @@
         </header>
         <div class="logo"></div>
         <div id="categoriesMenu">
+            <div id="mobileSearch">
+               <search v-bind:query="searchValue" v-on:search="search"></search> 
+            </div>
             <categories ref="catMenu"></categories>
         </div>
         <div class="site-pages">
@@ -39,6 +42,25 @@
             </transition>
         </div>
         <footer>
+            <div class="container">
+                <div class="footer-col footer-copyright">
+                    &copy;2005-{{ (new Date()).getFullYear() }} {{$t('title')}}
+                </div>
+                <div class="footer-col footer-designer" v-html="$t('footer.designedby')"></div>
+                <div class="width-100"></div>
+                <div class="footer-col footer-address">
+                    <div>
+                        <label>{{$t('about.shopInfo.addressTitle')}}:</label><span>{{$t('about.shopInfo.address')}}</span>
+                    </div>
+                </div>
+                <div class="footer-col footer-phone">
+                    <div>
+                        <label>{{$t('about.shopInfo.phone')}}:</label><span>03-5042253</span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- <footer>
             <div class="container">
                 <div>
                 &copy;2005-{{ (new Date()).getFullYear() }} {{$t('title')}}
@@ -55,7 +77,7 @@
                     <label>{{$t('about.shopInfo.phone')}}:</label><span>03-5042253</span>
                 </div>
             </div>
-        </footer>
+        </footer> -->
     </div>
 </template>
 
@@ -187,6 +209,10 @@
             },
             search (value) {
                 this.$router.push({ path: '/search', query: { q: value }})
+                if(window.matchMedia("(max-width: 540px)").matches) {
+                    $('#categoriesMenu').hide();
+                    $('#hamburger').removeClass('active');
+                }
             },
             showMenu () {
                 $('#categoriesMenu').toggle();
@@ -238,6 +264,7 @@ header {
     .navbar-default .navbar-nav li.navbar-main .breadcrumb {
         margin: 0;
         padding: 0;
+        background-color: #f3f3f3;
     }
         .navbar-default .navbar-nav li.navbar-main .breadcrumb > li {
             padding-left: 3px;
@@ -369,6 +396,54 @@ header {
     z-index: 5;
 }
 
+#mobileSearch {
+    display: none;
+    z-index: 4;
+    padding: 7px 15px 0;
+}
+    #mobileSearch > .input-group {
+        z-index: 4;
+        border: 1px solid #fff;
+        display: flex !important;
+        width: auto;
+    }
+    #mobileSearch input {
+        border: none !important;
+        background-color: transparent;
+        color: #fff !important;
+        width: auto !important;
+        padding: 2px 10px;
+        height: 24px;
+        flex-grow: 1;
+    }
+    #mobileSearch .input-group-btn {
+        width: 34px;
+    }
+        #mobileSearch .input-group-btn button {
+            padding: 2px 10px;
+            background-color: transparent;
+            border-color: transparent;
+        }
+        #site-wrapper #mobileSearch .input-group-btn button:hover,
+        #site-wrapper #mobileSearch .input-group-btn button:active,
+        #site-wrapper #mobileSearch .input-group-btn button:active:hover {
+            background-color: transparent;
+            border-color: transparent;
+        }
+
+    #mobileSearch input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: #ededed;
+        opacity: 1; /* Firefox */
+    }
+
+    #mobileSearch input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+        color: #ededed;
+    }
+
+    #mobileSearch input::-ms-input-placeholder { /* Microsoft Edge */
+        color: #ededed;
+    }
+
 @media (max-width: 540px) {
     .navbar-default .nav-container {
         display: flex;
@@ -395,6 +470,10 @@ header {
     #categoriesMenu {
         position: relative;
         display: none;
+    }
+
+    #mobileSearch {
+        display: block;
     }
 
     .navbar-default .navbar-nav {
@@ -452,5 +531,35 @@ header {
     .navbar-default .navbar-nav > li.language-select ol li a {
         color: #fff;
     }
+}
+
+@media (min-width: 541px) {
+    #categoriesMenu {
+        display: block !important;
+    }
+    
+    .navbar-default .navbar-nav {
+        float: left;
+        margin: 0;
+    }
+        #site-wrapper.heb .navbar-default .navbar-nav {
+            float: right;
+        }
+    .navbar-default .navbar-nav.navbar-right {
+        float: right!important;
+        margin-right: 0;
+    }
+        #site-wrapper.heb .navbar-default .navbar-nav.navbar-right {
+            float: left!important;
+            margin-right: 0;
+            margin-left: 0;
+        }
+    
+    .navbar-default .navbar-nav.navbar-right > li {
+        float: left;
+    }
+        #site-wrapper.heb .navbar-default .navbar-nav.navbar-right > li {
+            float: right;
+        }
 }
 </style>
