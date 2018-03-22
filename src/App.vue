@@ -89,17 +89,8 @@
             this.menuFullHeight = $_catMenu.outerHeight(true);
             this.isMenuAutoCollapse = $(window).width() > $(window).height();
             $(window).on('scroll', () => {
-<<<<<<< cc181ad12cd780efc70818ce90079d6ce6e01080
-<<<<<<< 58840c08f6ebfe468fce03c0e8775bc84d8ee4ff
-                let scrollTop = $(window).scrollTop();
-                if(this.isMenuAutoCollapse) {
-=======
-                if (window.matchMedia("(min-width: 541px)").matches) {
-=======
                 if (this.isMenuAutoCollapse && window.matchMedia("(min-width: 541px)").matches) {
->>>>>>> Menu behaviour
                     let scrollTop = $(window).scrollTop();
->>>>>>> Mobile version
                     if(vm.isMenuFixed === false && scrollTop > vm.menuTop) {
                         // Fix menu
                         vm.isMenuFixed = true;
@@ -110,15 +101,7 @@
                             .insertBefore($_catMenu);
 
                         $_catMenu.addClass('fixed');
-<<<<<<< cc181ad12cd780efc70818ce90079d6ce6e01080
-<<<<<<< 58840c08f6ebfe468fce03c0e8775bc84d8ee4ff
                         if(vm.$refs.catMenu && !vm.$refs.catMenu.closed) {
-=======
-                        if(!vm.$refs.catMenu.closed) {
->>>>>>> Mobile version
-=======
-                        if(vm.$refs.catMenu && !vm.$refs.catMenu.closed) {
->>>>>>> Menu behaviour
                             // Collapse menu on scroll
                             vm.$refs.catMenu.toggleMenu();
                         }
@@ -128,15 +111,7 @@
                         $_catMenu.removeClass('fixed');
                         $('#catMenuPlaceholder').remove();
 
-<<<<<<< cc181ad12cd780efc70818ce90079d6ce6e01080
-<<<<<<< 58840c08f6ebfe468fce03c0e8775bc84d8ee4ff
                         if(vm.$refs.catMenu && vm.$refs.catMenu.closed && !vm.$refs.catMenu.isClosedByUser) {
-=======
-                        if(vm.$refs.catMenu.closed && !vm.$refs.catMenu.isClosedByUser) {
->>>>>>> Mobile version
-=======
-                        if(vm.$refs.catMenu && vm.$refs.catMenu.closed && !vm.$refs.catMenu.isClosedByUser) {
->>>>>>> Menu behaviour
                             // Open menu on scroll to top only if its not be collapsed by user
                             vm.$refs.catMenu.toggleMenu();
                         }
@@ -144,17 +119,8 @@
                 }
             });
             $(window).on('resize', () => {
-<<<<<<< cc181ad12cd780efc70818ce90079d6ce6e01080
-<<<<<<< 58840c08f6ebfe468fce03c0e8775bc84d8ee4ff
-                this.isMenuAutoCollapse = $(window).width() > $(window).height();
-                if(this.isMenuAutoCollapse) {
-=======
-                if (window.matchMedia("(min-width: 541px)").matches) {
->>>>>>> Mobile version
-=======
                 this.isMenuAutoCollapse = $(window).width() > $(window).height();
                 if (this.isMenuAutoCollapse && window.matchMedia("(min-width: 541px)").matches) {
->>>>>>> Menu behaviour
                     this.menuHeight = $_catMenu.outerHeight(true);
                     this.menuFullHeight = $_catMenu.outerHeight(true);
                     if(vm.isMenuFixed) {
