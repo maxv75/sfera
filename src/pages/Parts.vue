@@ -42,6 +42,7 @@
 
 <script>
 import Part from '@/components/Part.vue';
+import DataLoader from '@/modules/DataLoader';
 
 export default {
     name: 'Parts',
@@ -76,11 +77,11 @@ export default {
         fetchData (transition) {
             this.loading = true;
 
-            this.$http.get('api/categories/' + this.$route.params.id +  '/parts').then(response => {
+            DataLoader.GetParts(this.$route.params.id).then(response => {
                 this.loading = false;
                 this.brandFilter = "";
                 this.priceFilter = "";
-                this.parts = response.data;
+                this.parts = response;
             }, response => {
                 this.$router.replace('/404');
             });

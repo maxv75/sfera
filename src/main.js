@@ -10,6 +10,7 @@ import VueAnalytics from 'vue-analytics'
 import App from './App'
 import router from './router'
 import appStore from './store';
+import DataLoader from './modules/DataLoader'
 
 Vue.config.productionTip = false;
 
@@ -76,10 +77,13 @@ Vue.http.get('/static/config/appconfig.json')
                     router,
                     store,
                     template: '<App/>',
-                    components: { App }
+                    components: { App },
+                    created () {
+                        DataLoader.Init(this)
+                    }
                 });
             });
     }, error => {
-        // Set default language
+        // Error loading config
         document.write('Unable to load configuration');
     });
