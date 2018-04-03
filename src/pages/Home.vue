@@ -48,8 +48,10 @@
 </template>
 
 <script>
-import Sales from '@/components/Sales.vue'
+import Sales from '@/components/Sales.vue';
 import Part from '@/components/Part.vue';
+import DataLoader from '@/modules/DataLoader';
+
 export default {
     components: { 'sales': Sales, 'part': Part },
     name: 'Home',
@@ -70,9 +72,9 @@ export default {
         getTopSellers () {
             this.loading = true;
 
-            this.$http.get('api/parts/topsellers').then(response => {
+            DataLoader.GetTopSellers().then(response => {
                 this.loading = false;
-                this.topsellers = response.data;
+                this.topsellers = response;
                 if(this.topsellers.length > 0) {
                     this.currentTopSeller = this.topsellers[0];
                 }

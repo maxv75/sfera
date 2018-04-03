@@ -19,6 +19,8 @@
 
 <script>
     import Part from '@/components/Part.vue';
+    import { mapGetters } from 'vuex';
+    import DataLoader from '@/modules/DataLoader'
 
     export default {
         name: 'Sales',
@@ -53,10 +55,12 @@
         methods: {
             fetchData () {
                 this.loading = true;
-                this.$http.get('api/parts/sales').then(response => {
+
+                DataLoader.GetSales().then(response => {
                     this.loading = false;
-                    this.parts = response.data;
-                });
+                    this.parts = response;
+                })
+                
             },
             setHeight () {
                 this.lineHeight = $('#salesWrapper .part-wrapper').outerHeight(true);
@@ -94,7 +98,7 @@
         computed: {
             PicturesFolder: function() {
                 return this.$config.PicturesUrl;
-            }
+            },
         },
     }
 </script>
