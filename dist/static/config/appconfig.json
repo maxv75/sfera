@@ -1,0 +1,74 @@
+{
+    "PicturesUrl": "https://www.sfera.co.il/pictures/",
+    "BaseAPIUrl": "https://new.sfera.co.il/",
+    "StoreMapUrl": "https://www.google.com/maps/embed/v1/place?key=AIzaSyD0aV-RzfYDV0CvT0CqoAWtjnqKZmwRCI0&q=Sokolov+St+85,+Holon&language=",
+    "DataCacheExpirationMinutes": 5,
+    "promotions": {
+        "top": [
+            {
+                "image": "/static/images/banners/banner_01_01.jpg",
+                "name_en": "Laptops",
+                "name_ru": "Ноутбуки",
+                "name_he": "מחשבים ניידים",
+                "category": 42
+            },
+            {
+                "image": "/static/images/banners/banner_01_02.jpg",
+                "name_en": "Software",
+                "name_ru": "Программы",
+                "name_he": "תוכנה",
+                "category": 58
+            }
+        ],
+        "bottom": {
+            "left": [
+                {
+                    "image": "/static/images/banners/banner_02_01.jpg",
+                    "name_en": "Speakers",
+                    "name_ru": "Динамики",
+                    "name_he": "רמקולים",
+                    "category": 62
+                },
+                {
+                    "image": "/static/images/banners/banner_02_02.jpg",
+                    "name_en": "Processors",
+                    "name_ru": "Процессоры",
+                    "name_he": "מעבדים",
+                    "category": 1
+                }
+            ],
+            "center": [
+                {
+                    "image": "/static/images/banners/banner_03_01.jpg",
+                    "name_en": "Monitors",
+                    "name_ru": "Мониторы",
+                    "name_he": "מסכים",
+                    "category": 26
+                },
+                {
+                    "image": "/static/images/banners/banner_03_02.jpg",
+                    "name_en": "Mouses",
+                    "name_ru": "Мыши",
+                    "name_he": "עכברים",
+                    "category": 30
+                }
+            ],
+            "right": [
+                {
+                    "image": "/static/images/banners/banner_04_01.jpg",
+                    "name_en": "Hard Drives",
+                    "name_ru": "Жесткие диски",
+                    "name_he": "כוננים קשיחים",
+                    "category": 11
+                },
+                {
+                    "image": "/static/images/banners/banner_04_02.jpg",
+                    "name_en": "Keyboards",
+                    "name_ru": "Клавиатуры",
+                    "name_he": "מקלדות",
+                    "category": 29
+                }
+            ]
+        }
+    }
+}
