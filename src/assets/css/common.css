@@ -423,6 +423,20 @@ h3.topsellers-title span {
     color: #0096DB;
 }
 
+#site-wrapper .viewpart-container .viewpart-description {
+    margin: 0;
+    padding: 20px 0;
+    border-top: 1px solid #dcdcdc;
+    color: #555;
+}
+    #site-wrapper .viewpart-container .viewpart-description p {
+        margin: 0 0 10px;
+    }
+        #site-wrapper .viewpart-container .viewpart-description p:last-child,
+        #site-wrapper .viewpart-container .viewpart-description ul:last-child {
+            margin-bottom: 0;
+        }
+
 @media (max-width: 1200px) {
     footer .container .width-100 {
         display: block;

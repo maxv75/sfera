@@ -14,11 +14,11 @@
                         <h4>{{info.name}}</h4>
                         <div class="viewpart-price">{{ info.is_sale == '1' ? info.sale_price : info.price }} &#8362;</div>
                     </div>
-                    <p v-if="info.short_descr" v-html="info.short_descr"></p>
-                    <p v-if="info.descr" v-html="info.descr"></p>
+                    <p class="viewpart-description" v-if="info.short_descr" v-html="info.short_descr"></p>
+                    <p class="viewpart-description" v-if="info.descr" v-html="info.descr"></p>
                     <div class="viewpart-warranty-wrapper">
                         <div v-if="info.warranty" class="viewpart-warranty" :class="{ 'separator': info.link }">{{ $t('part.warranty', { 'warranty': info.warranty }, parseInt(info.warranty)) }}</div>
-                        <div v-if="info.link" class="viewpart-link"><a :href="info.link" target="_blank">{{$t('part.link')}}</a></div>
+                        <div v-if="info.link" class="viewpart-link" :class="{ 'no-padding': !info.warranty }"><a :href="info.link" target="_blank">{{$t('part.link')}}</a></div>
                     </div>
                     <div class="back-btn-wrapper-mobile"><button type="button" @click="goBack" class="btn btn-primary">{{$t('part.back')}}</button></div>
                 </div>
@@ -105,7 +105,7 @@
         }
     }
 </script>
-<<style scoped>
+<style lang="scss" scoped>
 .viewpart-container {
     margin-bottom: 40px;
 }
@@ -135,25 +135,29 @@
 .viewpart-container .viewpart-image {
     text-align: center;
     padding-top: 60px;
+
+    img {
+        max-width: 220px;
+        max-height: 220px;
+        cursor: pointer;
+    }
+
+    div {
+        margin-top: 40px;
+
+        a {
+            color: #777;
+            background: #fff url('/static/images/zoom.png') 0 50% no-repeat;
+            padding-left: 32px;
+            text-decoration: underline;
+            height: 25px;
+            display: inline-block;
+            font-size: 1.2em;
+            line-height: 1.5;
+        }
+    }
 }
-.viewpart-container .viewpart-image img {
-    max-width: 220px;
-    max-height: 220px;
-    cursor: pointer;
-}
-.viewpart-container .viewpart-image div {
-    margin-top: 40px;
-}
-.viewpart-container .viewpart-image div a {
-    color: #777;
-    background: #fff url('/static/images/zoom.png') 0 50% no-repeat;
-    padding-left: 32px;
-    text-decoration: underline;
-    height: 25px;
-    display: inline-block;
-    font-size: 1.2em;
-    line-height: 1.5;
-}
+
     #site-wrapper.heb .viewpart-container .viewpart-image div a {
         background-position: 100% 50%;
         padding-left: 0;
@@ -169,12 +173,7 @@
     font-size: 1em;
     line-height: 1.7em;
 }
-.viewpart-container p {
-    margin: 0;
-    padding: 20px 0;
-    border-top: 1px solid #dcdcdc;
-    color: #555;
-}
+    
 .viewpart-container .viewpart-warranty-wrapper {
     padding: 15px 0 20px;
     border-top: 1px solid #dcdcdc;
@@ -199,10 +198,16 @@
     padding-left: 30px;
     display: inline-block;
 }
+    .viewpart-container .viewpart-link.no-padding {
+        padding-left: 0;
+    }
     #site-wrapper.heb .viewpart-container .viewpart-link {
         padding-left: 0;
         padding-right: 30px;
     }
+        #site-wrapper.heb .viewpart-container .viewpart-link.no-padding {
+            padding-right: 0;
+        }
 .viewpart-container .viewpart-link a {
     color: #555;
     text-decoration: underline;
@@ -302,3 +307,4 @@
     }
 }
 </style>
+
