@@ -2,9 +2,9 @@
   <div class="search-page container">
     <div class="search-input-wrapper center-block">
         <div class="input-group">
-            <input type="text" class="form-control" v-bind:placeholder="$t('search.placeholder')" v-model="searchValue" v-on:keyup="keyup" />
+            <input type="text" class="form-control" :placeholder="$t('search.placeholder')" v-model="searchValue" @keyup="keyup" />
             <div class="input-group-btn">
-                <button class="btn btn-primary" type="button" v-on:click="search"><i class="glyphicon glyphicon-search"></i></button>
+                <button class="btn btn-primary" type="button" @click="search"><i class="glyphicon glyphicon-search"></i></button>
             </div>
         </div> 
     </div>
@@ -19,7 +19,7 @@
             <h3>{{ $t('search.category', { 'category': item.category['name_' + lang], 'count': item.parts.length }, item.parts.length) }}</h3>
             <div class="parts-container clearfix">
                 <template v-for="part in item.parts">
-                    <part v-bind:data="part" :key="part.id"></part>
+                    <part :data="part" :key="part.id"></part>
                 </template>
             </div>
         </div>

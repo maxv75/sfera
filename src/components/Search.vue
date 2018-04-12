@@ -1,8 +1,8 @@
 <template>
     <div class="input-group" :style="{ 'visibility': isHidden ? 'hidden' : 'visible' }">
-        <input type="text" class="form-control input-sm" v-bind:placeholder="$t('search.placeholder')" v-model="searchValue" v-on:keyup="keyup" />
+        <input type="text" class="form-control input-sm" :placeholder="$t('search.placeholder')" v-model="searchValue" @keyup="keyup" />
         <div class="input-group-btn">
-            <button class="btn btn-primary btn-sm" type="button" v-on:click="search"><i class="glyphicon glyphicon-search"></i></button>
+            <button class="btn btn-primary btn-sm" type="button" @click="search"><i class="glyphicon glyphicon-search"></i></button>
         </div>
     </div>
 </template>

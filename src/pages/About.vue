@@ -13,19 +13,19 @@
                             <input type="text" class="form-control" id="txtSubject" v-model="form.subject">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="txtName" v-model.trim="form.name" v-bind:placeholder="$t('about.contactUs.name')">
+                            <input type="text" class="form-control" id="txtName" v-model.trim="form.name" :placeholder="$t('about.contactUs.name')">
                         </div>
                         <div class="form-group phone">
-                            <input type="tel" class="form-control" id="txtPhone" v-model.trim="form.phone" v-bind:placeholder="$t('about.contactUs.phone')">
+                            <input type="tel" class="form-control" id="txtPhone" v-model.trim="form.phone" :placeholder="$t('about.contactUs.phone')">
                         </div>
                         <div class="form-group email">
-                            <input type="email" class="form-control" id="txtEmail" v-model.trim="form.email" v-bind:placeholder="$t('about.contactUs.email')">
+                            <input type="email" class="form-control" id="txtEmail" v-model.trim="form.email" :placeholder="$t('about.contactUs.email')">
                         </div>
                         <div class="form-group message">
-                            <textarea class="form-control" rows="3" id="txtMessage" v-model.trim="form.message" v-bind:placeholder="$t('about.contactUs.message')"></textarea>
+                            <textarea class="form-control" rows="3" id="txtMessage" v-model.trim="form.message" :placeholder="$t('about.contactUs.message')"></textarea>
                         </div>
                         <span class="mandatory">{{ $t('about.contactUs.mandatory') }}</span>
-                        <button type="button" class="btn btn-primary" v-bind:class="{ 'pull-right': lang != 'he', 'pull-left': lang == 'he' }" @click="send">{{$t('about.contactUs.send')}}</button>
+                        <button type="button" class="btn btn-primary" :class="sendButtonClass" @click="send">{{$t('about.contactUs.send')}}</button>
                     </form>
                 </div>
                 <div class="col-md-6 address-wrapper">
@@ -191,6 +191,9 @@
             },
             mapUrl: function () {
                 return this.$config.StoreMapUrl + this.lang;
+            },
+            sendButtonClass: function() {
+                return this.lang == 'he' ? 'pull-left' : 'pull-right';
             }
         }
     }

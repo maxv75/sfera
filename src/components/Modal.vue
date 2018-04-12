@@ -17,7 +17,7 @@
                     <p class="modal-body-footer" v-if="footer && footer != ''">{{footer}}</p>
                 </div>
                 <div class="modal-footer" v-if="isFooter && !!isFooter === true">
-                    <button type="button" class="btn btn-primary btn-sm" v-bind:class="{ 'pull-right': lang != 'he', 'pull-left': lang == 'he' }" data-dismiss="modal">{{$t('about.contactUs.validation.alertClose')}}</button>
+                    <button type="button" class="btn btn-primary btn-sm" :class="{ 'pull-right': lang != 'he', 'pull-left': lang == 'he' }" data-dismiss="modal">{{$t('about.contactUs.validation.alertClose')}}</button>
                 </div>
             </div>
         </div>

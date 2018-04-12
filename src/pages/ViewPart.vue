@@ -4,12 +4,12 @@
             <h3 class="page-title"><span><template v-if="info.top_cat_id">{{ info.top_cat_name }} - </template>{{ info.cat_name }}</span></h3>
             <div class="row viewpart-container">
                 <div class="col-md-4 viewpart-image">
-                    <img id="partImage" v-if="info.image" @click="zoomImage" v-bind:src="PicturesFolder + info.image">
+                    <img id="partImage" v-if="info.image" @click="zoomImage" :src="PicturesFolder + info.image">
                     <img v-if="!info.img_tmb_medium" src="/static/images/noimage.png">
-                    <div v-if="info.image"><a id="btnZoom" @click.prevent="zoomImage" v-bind:href="PicturesFolder + info.image">{{$t('part.zoom')}}</a></div>
+                    <div v-if="info.image"><a id="btnZoom" @click.prevent="zoomImage" :href="PicturesFolder + info.image">{{$t('part.zoom')}}</a></div>
                 </div>
                 <div class="col-md-8">
-                    <div class="back-btn-wrapper clearfix"><button type="button" @click="goBack" class="btn btn-primary" v-bind:class="{ 'pull-right': lang != 'he', 'pull-left': lang == 'he' }">{{$t('part.back')}}</button></div>
+                    <div class="back-btn-wrapper clearfix"><button type="button" @click="goBack" class="btn btn-primary" :class="backButtonClass">{{$t('part.back')}}</button></div>
                     <div class="clearfix">
                         <h4>{{info.name}}</h4>
                         <div class="viewpart-price">{{ info.is_sale == '1' ? info.sale_price : info.price }} &#8362;</div>
@@ -69,6 +69,9 @@
             },
             PicturesFolder: function() {
                 return this.$config.PicturesUrl;
+            },
+            backButtonClass: function() {
+                return this.lang == 'he' ? 'pull-left' : 'pull-right';
             }
         },
         methods: {

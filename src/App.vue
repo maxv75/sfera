@@ -1,5 +1,5 @@
 <template>
-    <div id="site-wrapper" v-bind:class="{ 'heb': lang == 'he' }">
+    <div id="site-wrapper" :class="{ 'heb': lang == 'he' }">
         <div id="loading" v-if="loading">{{$t('loading')}}</div>
         <header>
             <nav class="navbar navbar-default container">
@@ -15,13 +15,13 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="search">
-                            <search v-bind:query="searchValue" v-on:search="search"></search>
+                            <search :query="searchValue" @search="search"></search>
                         </li>
                         <li class="language-select">
                             <ol>
                                 <li><i class="glyphicon glyphicon-chevron-down"></i>{{lang.toUpperCase()}}</li>
                                 <li v-for="ln in languages" :key="ln">
-                                    <a href="#" v-on:click.stop.prevent="changeLanguage(ln)">{{ln.toUpperCase()}}</a>
+                                    <a href="#" @click.stop.prevent="changeLanguage(ln)">{{ln.toUpperCase()}}</a>
                                 </li>
                             </ol>
                         </li>
@@ -32,13 +32,13 @@
         <div class="logo"></div>
         <div id="categoriesMenu">
             <div id="mobileSearch">
-               <search v-bind:query="searchValue" v-on:search="search"></search> 
+               <search :query="searchValue" @search="search"></search> 
             </div>
             <categories ref="catMenu"></categories>
         </div>
         <div class="site-pages">
-            <transition name="fade" mode="out-in">
-                <router-view></router-view>
+            <transition appear name="fade" mode="out-in">
+                <router-view :key="$route.fullPath"></router-view>
             </transition>
         </div>
         <footer>

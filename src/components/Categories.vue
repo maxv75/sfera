@@ -1,7 +1,7 @@
 <template>
     <div id="menu-wrapper" class="container">
         <ul class="level1 clearfix">
-            <li v-for="cat in categories" :key="cat.id" v-bind:class="{ 'expandable': cat.subcats.length > 0, 'link-active': isLinkActive(cat.id, cat.subcats) }" @click="hideMenu()">
+            <li v-for="cat in categories" :key="cat.id" :class="{ 'expandable': cat.subcats.length > 0, 'link-active': isLinkActive(cat.id, cat.subcats) }" @click="hideMenu()">
                 <template>
                     <router-link :to="{ name: 'Parts', params: { id: cat.id }}">{{ cat['name_' + lang] }}</router-link>
                     <ul class="level2" v-if="cat.subcats.length > 0">

@@ -14,7 +14,7 @@
                 <label>{{ $t('parts.filter.price') }}</label> 
                 <select class="price-filter" v-model="priceFilter">
                     <option value="">{{ $t('parts.filter.allPrices') }}</option>
-                    <option v-for="option in parts.prices"  :value="option" :key="option">
+                    <option v-for="option in parts.prices" :value="option" :key="option">
                         {{ option }}
                     </option>
                 </select>
@@ -23,7 +23,7 @@
         <div class="parts-container clearfix">
             <div class="no-data" v-if="parts.parts.length == 0">{{ $t('parts.nodata') }}</div>
             <template v-for="part in partsFilter">
-                <part v-bind:data="part" :key="part.id"></part>
+                <part :data="part" :key="part.id"></part>
             </template>
         </div>
     </div>
@@ -32,7 +32,7 @@
             <h3 class="topsellers-title"><span>{{$t('topSellers')}}</span></h3>
             <div class="parts-container topsellers clearfix">
                 <template v-for="part in parts.topsellers">
-                    <part v-bind:data="part" :topseller="true" :key="part.id"></part>
+                    <part :data="part" :topseller="true" :key="part.id"></part>
                 </template>
             </div>
         </div>
