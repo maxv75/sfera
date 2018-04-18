@@ -11,5 +11,5 @@ export default {
     loader,
     parts
   },
-  strict: true,
+  strict: process.env.NODE_ENV !== 'production'
 };
